@@ -7,7 +7,6 @@ use Symfony\Component\HttpKernel\Exception\HttpException as BaseHttpException;
 /**
  * An abstract exception responsible for holding error response data.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -18,14 +17,14 @@ abstract class HttpException extends BaseHttpException
      *
      * @var int
      */
-    protected $status = 500;
+    protected int $status = 500;
 
     /**
      * An error code.
      *
      * @var string|null
      */
-    protected $errorCode = null;
+    protected ?string $errorCode = null;
 
     /**
      * An error message.
@@ -39,14 +38,14 @@ abstract class HttpException extends BaseHttpException
      *
      * @var array|null
      */
-    protected $data = null;
+    protected ?array $data = null;
 
     /**
      * Attached headers.
      *
      * @var array
      */
-    protected $headers = [];
+    protected array $headers = [];
 
     /**
      * Construct the exception class.
@@ -74,7 +73,7 @@ abstract class HttpException extends BaseHttpException
      *
      * @return string|null
      */
-    public function errorCode()
+    public function errorCode(): ?string
     {
         return $this->errorCode;
     }
@@ -84,7 +83,7 @@ abstract class HttpException extends BaseHttpException
      *
      * @return string|null
      */
-    public function message()
+    public function message(): ?string
     {
         return $this->message ?: null;
     }
@@ -94,7 +93,7 @@ abstract class HttpException extends BaseHttpException
      *
      * @return array|null
      */
-    public function data()
+    public function data(): ?array
     {
         return $this->data;
     }
@@ -104,7 +103,7 @@ abstract class HttpException extends BaseHttpException
      *
      * @return array|null
      */
-    public function headers()
+    public function headers(): ?array
     {
         return $this->headers;
     }

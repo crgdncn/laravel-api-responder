@@ -3,9 +3,8 @@
 namespace Flugg\Responder\Exceptions\Http;
 
 /**
- * An exception thrown whan a relation is not found.
+ * An exception thrown when a relation is not found.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -16,12 +15,12 @@ class RelationNotFoundException extends HttpException
      *
      * @var int
      */
-    protected $status = 422;
+    protected int $status = 422;
 
     /**
      * An error code.
      *
      * @var string|null
      */
-    protected $errorCode = 'relation_not_found';
+    protected ?string $errorCode = 'relation_not_found';
 }

@@ -39,7 +39,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Flugg\\Responder\\": "src"
+            "Flugg\\Responder\\": "src",
+            "tests\\": "Flugg\\Responder\\Tests"
         },
         "files": [
             "src/helpers.php"

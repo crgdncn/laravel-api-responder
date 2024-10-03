@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace Flugg\Responder\Http\Responses\Decorators;
 
@@ -7,7 +7,6 @@ use Illuminate\Http\JsonResponse;
 /**
  * A decorator class for generating JSON using the JSON_PRETTY_PRINT option.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */

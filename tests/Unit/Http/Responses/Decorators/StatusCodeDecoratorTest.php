@@ -1,6 +1,6 @@
 <?php
 
-namespace Flugg\Responder\Tests\Unit\Http\Responses;
+namespace Flugg\Responder\Tests\Unit\Http\Responses\Decorators;
 
 use Flugg\Responder\Http\Responses\Decorators\StatusCodeDecorator;
 use Flugg\Responder\Tests\TestCase;

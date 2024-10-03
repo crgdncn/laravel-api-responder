@@ -1,4 +1,6 @@
-<?php
+<?php /** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace Flugg\Responder\Serializers;
 
@@ -9,7 +11,6 @@ use League\Fractal\Serializer\ArraySerializer;
 /**
  * A serializer class responsible for formatting success data.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -103,11 +104,11 @@ class SuccessSerializer extends ArraySerializer
     /**
      * Merge includes into data.
      *
-     * @param  array $transformedData
-     * @param  array $includedData
+     * @param array $transformedData
+     * @param array $includedData
      * @return array
      */
-    public function mergeIncludes($transformedData, $includedData): array
+    public function mergeIncludes(array $transformedData, array $includedData): array
     {
         foreach (array_keys($includedData) as $key) {
             $includedData[$key] = $includedData[$key]['data'];

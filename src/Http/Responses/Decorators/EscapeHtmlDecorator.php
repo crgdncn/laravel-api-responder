@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace Flugg\Responder\Http\Responses\Decorators;
 
@@ -7,7 +7,6 @@ use Illuminate\Http\JsonResponse;
 /**
  * A decorator class for escaping HTML entities in strings on the response.
  *
- * @package flugger/laravel-responder
  * @author  Paolo Caleffi <p.caleffi@dreamonkey.com>
  * @license The MIT License
  */
@@ -20,6 +19,7 @@ class EscapeHtmlDecorator extends ResponseDecorator
      * @param  int   $status
      * @param  array $headers
      * @return \Illuminate\Http\JsonResponse
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
      */
     public function make(array $data, int $status, array $headers = []): JsonResponse
     {

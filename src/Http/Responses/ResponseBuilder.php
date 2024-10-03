@@ -1,4 +1,8 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace Flugg\Responder\Http\Responses;
 
@@ -11,7 +15,6 @@ use Illuminate\Support\Collection;
 /**
  * An abstract builder class for building responses.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -25,7 +28,7 @@ abstract class ResponseBuilder implements Arrayable, Jsonable
     protected $responseFactory;
 
     /**
-     * A HTTP status code for the response.
+     * An HTTP status code for the response.
      *
      * @var int
      */
@@ -44,16 +47,16 @@ abstract class ResponseBuilder implements Arrayable, Jsonable
     /**
      * Decorate the response with the given decorator.
      *
-     * @param  string[]|string $decorator
+     * @param string|string[] $decorator
      * @return $this
      */
-    public function decorator($decorator)
+    public function decorator(array|string $decorator): static
     {
         $decorators = is_array($decorator) ? $decorator : func_get_args();
 
         foreach ($decorators as $decorator) {
             $this->responseFactory = new $decorator($this->responseFactory);
-        };
+        }
 
         return $this;
     }
@@ -111,7 +114,7 @@ abstract class ResponseBuilder implements Arrayable, Jsonable
      * @param  int $status
      * @return void
      */
-    protected function setStatusCode(int $status)
+    protected function setStatusCode(int $status): void
     {
         $this->validateStatusCode($this->status = $status);
     }
@@ -129,5 +132,5 @@ abstract class ResponseBuilder implements Arrayable, Jsonable
      * @param  int $status
      * @return void
      */
-    abstract protected function validateStatusCode(int $status);
+    abstract protected function validateStatusCode(int $status): void;
 }

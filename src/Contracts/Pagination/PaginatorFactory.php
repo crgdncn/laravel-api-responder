@@ -1,4 +1,8 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace Flugg\Responder\Contracts\Pagination;
 
@@ -10,7 +14,6 @@ use League\Fractal\Pagination\PaginatorInterface;
 /**
  * A contract for creating pagination adapters.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */

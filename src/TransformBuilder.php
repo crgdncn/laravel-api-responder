@@ -1,4 +1,19 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+
+/** @noinspection SpellCheckingInspection */
 
 namespace Flugg\Responder;
 
@@ -21,7 +36,6 @@ use League\Fractal\Serializer\SerializerAbstract;
 /**
  * A builder class responsible for building transformed arrays.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -52,6 +66,7 @@ class TransformBuilder
      * The resource that's being built.
      *
      * @var \League\Fractal\Resource\ResourceInterface
+     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     protected $resource;
 
@@ -100,12 +115,12 @@ class TransformBuilder
     /**
      * Make a resource from the given data and transformer and set the resource key.
      *
-     * @param  mixed                                                          $data
-     * @param  \Flugg\Responder\Transformers\Transformer|callable|string|null $transformer
+     * @param mixed|null $data
+     * @param callable|\Flugg\Responder\Transformers\Transformer|string|null $transformer
      * @param  string|null                                                    $resourceKey
      * @return $this
      */
-    public function resource($data = null, $transformer = null, string $resourceKey = null)
+    public function resource(mixed $data = null, callable|Transformer|string $transformer = null, string $resourceKey = null): static
     {
         $this->resource = $this->resourceFactory->make($data, $transformer, $resourceKey);
 
@@ -124,7 +139,7 @@ class TransformBuilder
      * @param  \League\Fractal\Pagination\Cursor $cursor
      * @return $this
      */
-    public function cursor(Cursor $cursor)
+    public function cursor(Cursor $cursor): static
     {
         if ($this->resource instanceof CollectionResource) {
             $this->resource->setCursor($cursor);
@@ -139,7 +154,7 @@ class TransformBuilder
      * @param  \League\Fractal\Pagination\IlluminatePaginatorAdapter $paginator
      * @return $this
      */
-    public function paginator(IlluminatePaginatorAdapter $paginator)
+    public function paginator(IlluminatePaginatorAdapter $paginator): static
     {
         if ($this->resource instanceof CollectionResource) {
             $this->resource->setPaginator($paginator);
@@ -154,7 +169,7 @@ class TransformBuilder
      * @param  array $data
      * @return $this
      */
-    public function meta(array $data)
+    public function meta(array $data): static
     {
         $this->resource->setMeta($data);
 
@@ -164,10 +179,10 @@ class TransformBuilder
     /**
      * Include relations to the transform.
      *
-     * @param  string[]|string $relations
+     * @param string|string[] $relations
      * @return $this
      */
-    public function with($relations)
+    public function with(array|string $relations): static
     {
         $relations = is_array($relations) ? $relations : func_get_args();
 
@@ -186,10 +201,10 @@ class TransformBuilder
     /**
      * Exclude relations from the transform.
      *
-     * @param  string[]|string $relations
+     * @param string|string[] $relations
      * @return $this
      */
-    public function without($relations)
+    public function without(array|string $relations): static
     {
         $this->without = array_merge($this->without, is_array($relations) ? $relations : func_get_args());
 
@@ -199,10 +214,10 @@ class TransformBuilder
     /**
      * Filter fields to output using sparse fieldsets.
      *
-     * @param  string[]|string $fields
+     * @param string|string[] $fields
      * @return $this
      */
-    public function only($fields)
+    public function only(array|string $fields): static
     {
         $this->only = array_merge($this->only, is_array($fields) ? $fields : func_get_args());
 
@@ -212,11 +227,11 @@ class TransformBuilder
     /**
      * Set the serializer.
      *
-     * @param  \League\Fractal\Serializer\SerializerAbstract|string $serializer
+     * @param \League\Fractal\Serializer\SerializerAbstract|string $serializer
      * @return $this
      * @throws \Flugg\Responder\Exceptions\InvalidSuccessSerializerException
      */
-    public function serializer($serializer)
+    public function serializer(SerializerAbstract|string $serializer): static
     {
         if (is_string($serializer)) {
             $serializer = new $serializer();
@@ -236,7 +251,7 @@ class TransformBuilder
      *
      * @return array|null
      */
-    public function transform()
+    public function transform(): ?array
     {
         $this->prepareRelations($this->resource->getData(), $this->resource->getTransformer());
 
@@ -251,10 +266,10 @@ class TransformBuilder
      * Prepare requested relations for the transformation.
      *
      * @param  mixed                                                          $data
-     * @param  \Flugg\Responder\Transformers\Transformer|callable|string|null $transformer
+     * @param callable|\Flugg\Responder\Transformers\Transformer|string|null $transformer
      * @return void
      */
-    protected function prepareRelations($data, $transformer)
+    protected function prepareRelations(mixed $data, callable|Transformer|string|null $transformer): void
     {
         if ($transformer instanceof Transformer) {
             $relations = $transformer->relations($this->with);
@@ -301,10 +316,10 @@ class TransformBuilder
      *
      * @param  mixed                                                          $data
      * @param  array                                                          $requested
-     * @param  \Flugg\Responder\Transformers\Transformer|callable|string|null $transformer
+     * @param callable|\Flugg\Responder\Transformers\Transformer|string|null $transformer
      * @return void
      */
-    protected function eagerLoadRelations($data, array $requested, $transformer)
+    protected function eagerLoadRelations(mixed $data, array $requested, callable|Transformer|string|null $transformer): void
     {
         $relations = collect(array_keys($requested))->reduce(function ($eagerLoads, $relation) use ($requested, $transformer) {
             $identifier = $this->stripParametersFromRelation($relation);

@@ -1,4 +1,10 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+
+/** @noinspection SpellCheckingInspection */
 
 namespace Flugg\Responder;
 
@@ -11,7 +17,6 @@ use LogicException;
 /**
  * A factory class responsible for transforming and serializing data utilizing Fractal.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -21,6 +26,7 @@ class FractalTransformFactory implements TransformFactory
      * A manager for executing transforms.
      *
      * @var \League\Fractal\Manager
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
      */
     protected $manager;
 
@@ -28,6 +34,7 @@ class FractalTransformFactory implements TransformFactory
      * Construct the factory class.
      *
      * @param \League\Fractal\Manager $manager
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
      */
     public function __construct(Manager $manager)
     {
@@ -41,8 +48,10 @@ class FractalTransformFactory implements TransformFactory
      * @param  \League\Fractal\Serializer\SerializerAbstract $serializer
      * @param  array                                         $options
      * @return array|null
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
      */
-    public function make(ResourceInterface $resource, SerializerAbstract $serializer, array $options = [])
+    public function make(ResourceInterface $resource, SerializerAbstract $serializer, array $options = []): ?array
     {
         $options = $this->parseOptions($options, $resource);
 
@@ -60,6 +69,7 @@ class FractalTransformFactory implements TransformFactory
      * @param  array                                      $options
      * @param  \League\Fractal\Resource\ResourceInterface $resource
      * @return array
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
      */
     protected function parseOptions(array $options, ResourceInterface $resource): array
     {
@@ -129,11 +139,11 @@ class FractalTransformFactory implements TransformFactory
     /**
      * Resolve included segments that are a direct child to the given resource key.
      *
-     * @param  string $key
+     * @param string $key
      * @param  string $include
      * @return array
      */
-    protected function resolveChildIncludes($key, string $include): array
+    protected function resolveChildIncludes(string $key, string $include): array
     {
         if (count($segments = explode('.', $include)) <= 1) {
             return [];

@@ -1,4 +1,8 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace Flugg\Responder\Http\Responses;
 
@@ -13,7 +17,6 @@ use League\Fractal\Serializer\SerializerAbstract;
 /**
  * A builder class for building success responses.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  *
@@ -34,7 +37,7 @@ class SuccessResponseBuilder extends ResponseBuilder
     protected $transformBuilder;
 
     /**
-     * A HTTP status code for the response.
+     * An HTTP status code for the response.
      *
      * @var int
      */
@@ -56,12 +59,13 @@ class SuccessResponseBuilder extends ResponseBuilder
     /**
      * Set resource data for the transformation.
      *
-     * @param  mixed                                                          $data
-     * @param  \Flugg\Responder\Transformers\Transformer|callable|string|null $transformer
+     * @param mixed|null $data
+     * @param callable|\Flugg\Responder\Transformers\Transformer|string|null $transformer
      * @param  string|null                                                    $resourceKey
      * @return self
+     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
-    public function transform($data = null, $transformer = null, string $resourceKey = null): SuccessResponseBuilder
+    public function transform(mixed $data = null, callable|\Flugg\Responder\Transformers\Transformer|string $transformer = null, string $resourceKey = null): SuccessResponseBuilder
     {
         $this->transformBuilder->resource($data, $transformer, $resourceKey);
 
@@ -71,11 +75,11 @@ class SuccessResponseBuilder extends ResponseBuilder
     /**
      * Dynamically send calls to the transform builder.
      *
-     * @param  string $name
-     * @param  array  $arguments
+     * @param string $name
+     * @param array $arguments
      * @return self|void
      */
-    public function __call($name, $arguments)
+    public function __call(string $name, array $arguments)
     {
         if (in_array($name, ['cursor', 'paginator', 'meta', 'with', 'without', 'only', 'serializer'])) {
             $this->transformBuilder->$name(...$arguments);
@@ -103,7 +107,7 @@ class SuccessResponseBuilder extends ResponseBuilder
      * @return void
      * @throws \InvalidArgumentException
      */
-    protected function validateStatusCode(int $status)
+    protected function validateStatusCode(int $status): void
     {
         if ($status < 100 || $status >= 400) {
             throw new InvalidArgumentException("{$status} is not a valid success HTTP status code.");

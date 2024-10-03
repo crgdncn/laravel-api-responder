@@ -5,7 +5,6 @@ namespace Flugg\Responder\Contracts\Resources;
 /**
  * A contract for resolving resource keys.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -14,11 +13,11 @@ interface ResourceKeyResolver
     /**
      * Register a transformable to resource key binding.
      *
-     * @param  string|array $transformable
+     * @param array|string $transformable
      * @param  string       $resourceKey
      * @return void
      */
-    public function bind($transformable, string $resourceKey);
+    public function bind(array|string $transformable, string $resourceKey): void;
 
     /**
      * Resolve a resource key from the given data.
@@ -26,5 +25,5 @@ interface ResourceKeyResolver
      * @param  mixed $data
      * @return string
      */
-    public function resolve($data);
+    public function resolve(mixed $data): string;
 }

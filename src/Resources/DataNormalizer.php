@@ -1,4 +1,7 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+
+/** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 namespace Flugg\Responder\Resources;
 
@@ -15,7 +18,6 @@ use Illuminate\Database\Query\Builder;
 /**
  * This class is responsible for normalizing resource data.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -24,10 +26,10 @@ class DataNormalizer
     /**
      * Normalize the data for a resource.
      *
-     * @param  mixed $data
+     * @param mixed|null $data
      * @return mixed
      */
-    public function normalize($data = null)
+    public function normalize(mixed $data = null): mixed
     {
         if ($this->isInstanceOf($data, [Builder::class, EloquentBuilder::class, CursorPaginator::class])) {
             return $data->get();
@@ -46,7 +48,7 @@ class DataNormalizer
      * @param  \Illuminate\Database\Eloquent\Relations\Relation $relation
      * @return \Illuminate\Support\Collection|\Illuminate\Database\Eloquent\Model|null
      */
-    protected function normalizeRelation(Relation $relation)
+    protected function normalizeRelation(Relation $relation): \Illuminate\Database\Eloquent\Model|\Illuminate\Support\Collection|null
     {
         if ($this->isInstanceOf($relation, [BelongsTo::class, HasOne::class, MorphOne::class, MorphTo::class])) {
             return $relation->first();
@@ -56,13 +58,13 @@ class DataNormalizer
     }
 
     /**
-     * Indicates if the given data is an instance of any of the given class names.
+     * Indicates if the given data is any instance of the given class names.
      *
      * @param  mixed $data
      * @param  array $classes
      * @return bool
      */
-    protected function isInstanceOf($data, array $classes): bool
+    protected function isInstanceOf(mixed $data, array $classes): bool
     {
         foreach ($classes as $class) {
             if ($data instanceof $class) {

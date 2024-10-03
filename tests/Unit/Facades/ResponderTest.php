@@ -1,6 +1,6 @@
 <?php
 
-namespace Flugg\Responder\Tests\Unit\Facades;
+namespace Flugg\Responder\Tests\Unit\Http\Facades;
 
 use Flugg\Responder\Contracts\Responder as ResponderContract;
 use Flugg\Responder\Facades\Responder;

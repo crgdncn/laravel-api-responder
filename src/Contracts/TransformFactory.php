@@ -1,4 +1,6 @@
-<?php
+<?php /** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace Flugg\Responder\Contracts;
 
@@ -8,7 +10,6 @@ use League\Fractal\Serializer\SerializerAbstract;
 /**
  * A contract for transforming and serializing data.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -22,5 +23,5 @@ interface TransformFactory
      * @param  array                                         $options
      * @return array|null
      */
-    public function make(ResourceInterface $resource, SerializerAbstract $serializer, array $options = []);
+    public function make(ResourceInterface $resource, SerializerAbstract $serializer, array $options = []): ?array;
 }

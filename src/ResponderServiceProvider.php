@@ -1,4 +1,7 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+
+/** @noinspection SpellCheckingInspection */
 
 namespace Flugg\Responder;
 
@@ -34,7 +37,6 @@ use League\Fractal\Serializer\SerializerAbstract;
 /**
  * A service provider class responsible for bootstrapping the parts of the Laravel package.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -52,7 +54,7 @@ class ResponderServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         if ($this->app instanceof Laravel) {
             $this->registerLaravelBindings();
@@ -75,7 +77,7 @@ class ResponderServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    protected function registerLaravelBindings()
+    protected function registerLaravelBindings(): void
     {
         $this->app->singleton(ResponseFactoryContract::class, function ($app) {
             return $this->decorateResponseFactory($app->make(LaravelResponseFactory::class));
@@ -87,7 +89,7 @@ class ResponderServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    protected function registerLumenBindings()
+    protected function registerLumenBindings(): void
     {
         $this->app->singleton(ResponseFactoryContract::class, function ($app) {
             return $this->decorateResponseFactory($app->make(LumenResponseFactory::class));
@@ -108,7 +110,7 @@ class ResponderServiceProvider extends BaseServiceProvider
     {
         foreach ($this->app->config['responder.decorators'] as $decorator) {
             $factory = new $decorator($factory);
-        };
+        }
 
         return $factory;
     }
@@ -118,7 +120,7 @@ class ResponderServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    protected function registerSerializerBindings()
+    protected function registerSerializerBindings(): void
     {
         $this->app->bind(ErrorSerializerContract::class, function ($app) {
             return $app->make($app->config['responder.serializers.error']);
@@ -134,7 +136,7 @@ class ResponderServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    protected function registerErrorBindings()
+    protected function registerErrorBindings(): void
     {
         $this->app->singleton(ErrorMessageResolverContract::class, function ($app) {
             return $app->make(ErrorMessageResolver::class);
@@ -154,7 +156,7 @@ class ResponderServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    protected function registerFractalBindings()
+    protected function registerFractalBindings(): void
     {
         $this->app->bind(Manager::class, function ($app) {
             return (new Manager())->setRecursionLimit($app->config['responder.recursion_limit']);
@@ -166,7 +168,7 @@ class ResponderServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    protected function registerTransformerBindings()
+    protected function registerTransformerBindings(): void
     {
         $this->app->singleton(TransformerResolverContract::class, function ($app) {
             return new TransformerResolver($app, $app->config['responder.fallback_transformer']);
@@ -182,7 +184,7 @@ class ResponderServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    protected function registerResourceBindings()
+    protected function registerResourceBindings(): void
     {
         $this->app->singleton(ResourceKeyResolverContract::class, function ($app) {
             return $app->make(ResourceKeyResolver::class);
@@ -198,7 +200,7 @@ class ResponderServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    protected function registerPaginationBindings()
+    protected function registerPaginationBindings(): void
     {
         $this->app->bind(PaginatorFactoryContract::class, function ($app) {
             return new PaginatorFactory($app->make(Request::class)->query());
@@ -210,7 +212,7 @@ class ResponderServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    protected function registerTransformationBindings()
+    protected function registerTransformationBindings(): void
     {
         $this->app->bind(TransformFactoryContract::class, function ($app) {
             return $app->make(FractalTransformFactory::class);
@@ -232,7 +234,7 @@ class ResponderServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    protected function registerServiceBindings()
+    protected function registerServiceBindings(): void
     {
         $this->app->bind(ResponderContract::class, function ($app) {
             return $app->make(Responder::class);
@@ -244,7 +246,7 @@ class ResponderServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         if ($this->app instanceof Laravel) {
             $this->bootLaravelApplication();
@@ -261,7 +263,7 @@ class ResponderServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    protected function bootLaravelApplication()
+    protected function bootLaravelApplication(): void
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -278,7 +280,7 @@ class ResponderServiceProvider extends BaseServiceProvider
      *
      * @return void
      */
-    protected function bootLumenApplication()
+    protected function bootLumenApplication(): void
     {
         $this->app->configure('responder');
     }

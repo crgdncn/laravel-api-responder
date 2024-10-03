@@ -1,4 +1,7 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace Flugg\Responder\Http\Responses\Decorators;
 
@@ -8,7 +11,6 @@ use Illuminate\Http\JsonResponse;
 /**
  * A decorator class for decorating responses.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */

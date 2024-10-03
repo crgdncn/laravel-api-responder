@@ -51,7 +51,7 @@ final class IncludeRelationTest extends TestCase
     {
         $response = responder()
             ->success($this->product, ProductWithShipmentsWhitelistedTransformer::class)
-            ->with('shipments', 'orders.customer', 'invalid')
+            ->with(['shipments', 'orders.customer', 'invalid'])
             ->respond();
 
         $this->assertEquals($this->responseData(array_merge($this->product->fresh()->toArray(), [
@@ -67,7 +67,7 @@ final class IncludeRelationTest extends TestCase
     {
         $response = responder()
             ->success($this->product, ProductWithOrdersWhitelistedTransformer::class)
-            ->with('orders.product')
+            ->with(['orders.product'])
             ->respond();
 
         $this->assertEquals($this->responseData(array_merge($this->product->fresh()->toArray(), [
@@ -104,7 +104,7 @@ final class IncludeRelationTest extends TestCase
     {
         $response = responder()
             ->success($this->product, ProductTransformer::class)
-            ->with('shipments', 'orders.customer')
+            ->with(['shipments', 'orders.customer'])
             ->respond();
 
         $this->assertEquals($this->responseData(array_merge($this->product->toArray(), [
@@ -184,7 +184,7 @@ final class IncludeRelationTest extends TestCase
     {
         $response = responder()
             ->success($this->product, ProductWithOrdersWhitelistedAndCustomerAutoloadedTransformer::class)
-            ->with('orders')
+            ->with(['orders'])
             ->respond();
 
         $this->assertEquals($this->responseData(array_merge($this->product->toArray(), [
@@ -220,7 +220,7 @@ final class IncludeRelationTest extends TestCase
 
         responder()
             ->success($product, ProductWithShipmentsWhitelistedTransformer::class)
-            ->with('shipments', 'orders')
+            ->with(['shipments', 'orders'])
             ->respond();
 
         $product->shouldHaveReceived('load')->with(Mockery::on(function ($argument) {
@@ -239,7 +239,7 @@ final class IncludeRelationTest extends TestCase
 
         responder()
             ->success($product, ProductWithSnakeCasedRelationsTransformer::class)
-            ->with('whitelisted_shipments', 'default_orders')
+            ->with(['whitelisted_shipments', 'default_orders'])
             ->respond();
 
         $product->shouldHaveReceived('load')->with(Mockery::on(function ($argument) {
@@ -259,7 +259,7 @@ final class IncludeRelationTest extends TestCase
 
         responder()
             ->success($product, ProductWithSnakeCasedRelationsTransformer::class)
-            ->with('whitelisted_shipments', 'default_orders')
+            ->with(['whitelisted_shipments', 'default_orders'])
             ->respond();
 
         $product->shouldHaveReceived('load')->with(Mockery::on(function ($argument) {
@@ -277,7 +277,7 @@ final class IncludeRelationTest extends TestCase
 
         $response = responder()
             ->success($product, ProductWithIncludeMethodTransformer::class)
-            ->with('shipments', 'orders')
+            ->with(['shipments', 'orders'])
             ->respond();
 
         $product->shouldHaveReceived('load')->with(Mockery::on(function ($argument) {
@@ -297,7 +297,7 @@ final class IncludeRelationTest extends TestCase
     {
         $response = responder()
             ->success($this->product, ProductWithIncludeMethodAndParametersTransformer::class)
-            ->with('shipments:product(foo|bar)')
+            ->with(['shipments:product(foo|bar)'])
             ->respond();
 
         $this->assertEquals($this->responseData(array_merge($this->product->fresh()->toArray(), [
@@ -315,7 +315,7 @@ final class IncludeRelationTest extends TestCase
 
         $response = responder()
             ->success($this->product, ProductWithLoadMethodTransformer::class)
-            ->with('shipments')
+            ->with(['shipments'])
             ->respond();
 
         $this->assertEquals($this->responseData(array_merge($this->product->toArray(), [
@@ -333,7 +333,7 @@ final class IncludeRelationTest extends TestCase
 
         $response = responder()
             ->success($this->product, ProductWithFilterMethodTransformer::class)
-            ->with('shipments')
+            ->with(['shipments'])
             ->respond();
 
         $this->assertEquals($this->responseData(array_merge($this->product->toArray(), [

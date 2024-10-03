@@ -1,14 +1,15 @@
-<?php
+<?php /** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace Flugg\Responder\Exceptions\Http;
 
 use Illuminate\Contracts\Validation\Validator;
 
 /**
- * An exception thrown whan validation fails. This exception replaces Laravel's
+ * An exception thrown when validation fails. This exception replaces Laravel
  * [\Illuminate\Validation\ValidationException].
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -19,14 +20,14 @@ class ValidationFailedException extends HttpException
      *
      * @var int
      */
-    protected $status = 422;
+    protected int $status = 422;
 
     /**
      * An error code.
      *
      * @var string|null
      */
-    protected $errorCode = 'validation_failed';
+    protected ?string $errorCode = 'validation_failed';
 
     /**
      * A validator for fetching validation messages.
@@ -52,7 +53,7 @@ class ValidationFailedException extends HttpException
      *
      * @return array|null
      */
-    public function data()
+    public function data(): ?array
     {
         return ['fields' => $this->validator->getMessageBag()->toArray()];
     }

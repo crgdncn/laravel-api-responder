@@ -1,4 +1,9 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace Flugg\Responder\Transformers\Concerns;
 
@@ -8,7 +13,6 @@ use League\Fractal\Scope;
 /**
  * A trait to be used by a transformer to override Fractal's transformer methods.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -42,11 +46,11 @@ trait OverridesFractal
      * Overrides Fractal's method for including a relation.
      *
      * @param  \League\Fractal\Scope $scope
-     * @param  string                $identifier
+     * @param string $identifier
      * @param  mixed                 $data
      * @return \League\Fractal\Resource\ResourceInterface
      */
-    protected function callIncludeMethod(Scope $scope, $identifier, $data)
+    protected function callIncludeMethod(Scope $scope, string $identifier, $data): ResourceInterface
     {
         $parameters = iterator_to_array($scope->getManager()->getIncludeParams($scope->getIdentifier($identifier)));
 
@@ -76,7 +80,7 @@ trait OverridesFractal
      *
      * @return \League\Fractal\Scope
      */
-    abstract public function getCurrentScope();
+    abstract public function getCurrentScope(): Scope;
 
     /**
      * Normalize relations to force a key value structure.
@@ -94,5 +98,5 @@ trait OverridesFractal
      * @param  array  $parameters
      * @return \League\Fractal\Resource\ResourceInterface
      */
-    abstract protected function includeResource(string $identifier, $data, array $parameters): ResourceInterface;
+    abstract protected function includeResource(string $identifier, mixed $data, array $parameters): ResourceInterface;
 }

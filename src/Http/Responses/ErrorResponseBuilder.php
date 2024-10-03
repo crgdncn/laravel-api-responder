@@ -1,4 +1,11 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace Flugg\Responder\Http\Responses;
 
@@ -11,7 +18,6 @@ use InvalidArgumentException;
 /**
  * A builder class for building error responses.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -21,6 +27,7 @@ class ErrorResponseBuilder extends ResponseBuilder
      * A factory for building error data output.
      *
      * @var \Flugg\Responder\Contracts\ErrorFactory
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
      */
     private $errorFactory;
 
@@ -28,6 +35,7 @@ class ErrorResponseBuilder extends ResponseBuilder
      * A serializer for formatting error data.
      *
      * @var \Flugg\Responder\Contracts\ErrorSerializer
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
      */
     protected $serializer;
 
@@ -39,7 +47,7 @@ class ErrorResponseBuilder extends ResponseBuilder
     protected $errorCode = null;
 
     /**
-     * A message descibing the error.
+     * A message describing the error.
      *
      * @var string|null
      */
@@ -53,7 +61,7 @@ class ErrorResponseBuilder extends ResponseBuilder
     protected $data = null;
 
     /**
-     * A HTTP status code for the response.
+     * An HTTP status code for the response.
      *
      * @var int
      */
@@ -64,6 +72,8 @@ class ErrorResponseBuilder extends ResponseBuilder
      *
      * @param \Flugg\Responder\Contracts\ResponseFactory $responseFactory
      * @param \Flugg\Responder\Contracts\ErrorFactory    $errorFactory
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
      */
     public function __construct(ResponseFactory $responseFactory, ErrorFactory $errorFactory)
     {
@@ -75,11 +85,11 @@ class ErrorResponseBuilder extends ResponseBuilder
     /**
      * Set the error code and message.
      *
-     * @param  mixed|null  $errorCode
+     * @param mixed|null $errorCode
      * @param  string|null $message
      * @return $this
      */
-    public function error($errorCode = null, string $message = null)
+    public function error(mixed $errorCode = null, string $message = null): static
     {
         $this->errorCode = $errorCode;
         $this->message = $message;
@@ -93,7 +103,7 @@ class ErrorResponseBuilder extends ResponseBuilder
      * @param  array|null $data
      * @return $this
      */
-    public function data(array $data = null)
+    public function data(array $data = null): static
     {
         $this->data = array_merge((array) $this->data, (array) $data);
 
@@ -103,11 +113,13 @@ class ErrorResponseBuilder extends ResponseBuilder
     /**
      * Set the error serializer.
      *
-     * @param  \Flugg\Responder\Contracts\ErrorSerializer|string $serializer
+     * @param \Flugg\Responder\Contracts\ErrorSerializer|string $serializer
      * @return $this
      * @throws \Flugg\Responder\Exceptions\InvalidErrorSerializerException
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
      */
-    public function serializer($serializer)
+    public function serializer(ErrorSerializer|string $serializer): static
     {
         if (is_string($serializer)) {
             $serializer = new $serializer();
@@ -138,8 +150,9 @@ class ErrorResponseBuilder extends ResponseBuilder
      * @param  int $status
      * @return void
      * @throws \InvalidArgumentException
+     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
      */
-    protected function validateStatusCode(int $status)
+    protected function validateStatusCode(int $status): void
     {
         if ($status < 400 || $status >= 600) {
             throw new InvalidArgumentException("{$status} is not a valid error HTTP status code.");

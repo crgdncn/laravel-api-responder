@@ -1,4 +1,18 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 namespace Flugg\Responder\Pagination;
 
@@ -9,7 +23,6 @@ use LogicException;
 /**
  * A paginator class for handling cursor-based pagination.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -53,12 +66,12 @@ class CursorPaginator
     /**
      * Create a new paginator instance.
      *
-     * @param \Illuminate\Support\Collection|array|null $data
-     * @param int|string|null                           $cursor
-     * @param int|string|null                           $previousCursor
-     * @param int|string|null                           $nextCursor
+     * @param array|\Illuminate\Support\Collection|null $data
+     * @param int|string|null $cursor
+     * @param int|string|null $previousCursor
+     * @param int|string|null $nextCursor
      */
-    public function __construct($data, $cursor, $previousCursor, $nextCursor)
+    public function __construct(array|Collection|null $data, int|string|null $cursor, int|string|null $previousCursor, int|string|null $nextCursor)
     {
         $this->cursor = $cursor;
         $this->previousCursor = $previousCursor;
@@ -72,27 +85,27 @@ class CursorPaginator
      *
      * @return int|string|null
      */
-    public function cursor()
+    public function cursor(): int|string|null
     {
         return $this->cursor;
     }
 
     /**
-     * Retireve the next cursor reference.
+     * Retrieve the next cursor reference.
      *
      * @return int|string|null
      */
-    public function previous()
+    public function previous(): int|string|null
     {
         return $this->previousCursor;
     }
 
     /**
-     * Retireve the next cursor reference.
+     * Retrieve the next cursor reference.
      *
      * @return int|string|null
      */
-    public function next()
+    public function next(): int|string|null
     {
         return $this->nextCursor;
     }
@@ -120,10 +133,10 @@ class CursorPaginator
     /**
      * Set the paginator's underlying collection.
      *
-     * @param  \Illuminate\Support\Collection|array|null $data
+     * @param array|\Illuminate\Support\Collection|null $data
      * @return self
      */
-    public function set($data): CursorPaginator
+    public function set(array|Collection|null $data): CursorPaginator
     {
         $this->items = $data instanceof Collection ? $data : collect($data);
 
@@ -137,7 +150,7 @@ class CursorPaginator
      * @return mixed
      * @throws \LogicException
      */
-    public static function resolveCursor(string $name = 'cursor')
+    public static function resolveCursor(string $name = 'cursor'): mixed
     {
         if (isset(static::$currentCursorResolver)) {
             return call_user_func(static::$currentCursorResolver, $name);
@@ -152,7 +165,7 @@ class CursorPaginator
      * @param  \Closure $resolver
      * @return void
      */
-    public static function cursorResolver(Closure $resolver)
+    public static function cursorResolver(Closure $resolver): void
     {
         static::$currentCursorResolver = $resolver;
     }

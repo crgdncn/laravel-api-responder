@@ -7,7 +7,6 @@ use Illuminate\Contracts\Support\Arrayable;
 /**
  * A transformer class for transforming data into an array without manipulations.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -19,7 +18,7 @@ class ArrayTransformer extends Transformer
      * @param  mixed $data
      * @return array
      */
-    public function transform($data)
+    public function transform(mixed $data): array
     {
         return $data instanceof Arrayable ? $data->toArray() : $data;
     }

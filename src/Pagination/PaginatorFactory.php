@@ -1,4 +1,8 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace Flugg\Responder\Pagination;
 
@@ -11,7 +15,6 @@ use League\Fractal\Pagination\PaginatorInterface;
 /**
  * A factory class for making Fractal paginator adapters from a Laravel paginator.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */

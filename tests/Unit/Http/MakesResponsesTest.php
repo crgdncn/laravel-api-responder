@@ -1,6 +1,6 @@
 <?php
 
-namespace Flugg\Responder\Tests\Unit;
+namespace Flugg\Responder\Tests\Unit\Http;
 
 use Flugg\Responder\Http\MakesResponses;
 use Flugg\Responder\Responder;

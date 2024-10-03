@@ -1,8 +1,11 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+
+/** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 namespace Flugg\Responder\Exceptions;
 
-use Exception;
 use Flugg\Responder\Contracts\Responder;
 use Flugg\Responder\Exceptions\Http\HttpException;
 use Flugg\Responder\Exceptions\Http\PageNotFoundException;
@@ -21,7 +24,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * A trait used by exception handlers to transform and render error responses.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -37,11 +39,11 @@ trait ConvertsExceptions
     /**
      * Convert an exception to another exception
      *
-     * @param  \Exception|\Throwable $exception
+     * @param \Throwable|\Exception $exception
      * @param  array      $convert
      * @return void
      */
-    protected function convert($exception, array $convert)
+    protected function convert(\Throwable|\Exception $exception, array $convert): void
     {
         foreach ($convert as $source => $target) {
             if ($exception instanceof $source) {
@@ -57,10 +59,10 @@ trait ConvertsExceptions
     /**
      * Convert a default exception to an API exception.
      *
-     * @param  \Exception|\Throwable $exception
+     * @param \Throwable|\Exception $exception
      * @return void
      */
-    protected function convertDefaultException($exception)
+    protected function convertDefaultException(\Throwable|\Exception $exception): void
     {
         $this->convert($exception, array_diff_key([
             AuthenticationException::class => UnauthenticatedException::class,

@@ -49,7 +49,7 @@ final class FilterResponseFieldsTest extends TestCase
     {
         $response = responder()
             ->success($this->product, ProductTransformer::class)
-            ->with('shipments', 'orders.customer')
+            ->with(['shipments', 'orders.customer'])
             ->only([
                 'products' => ['name'],
                 'shipments' => ['id'],
@@ -83,7 +83,7 @@ final class FilterResponseFieldsTest extends TestCase
 
         $response = responder()
             ->success($this->product, ProductTransformer::class)
-            ->with('shipments', 'orders.customer')
+            ->with(['shipments', 'orders.customer'])
             ->respond();
 
         $this->assertEquals($this->responseData(array_merge(Arr::only($this->product->toArray(), ['name']), [

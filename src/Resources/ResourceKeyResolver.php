@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace Flugg\Responder\Resources;
 
@@ -9,7 +9,6 @@ use Traversable;
 /**
  * This class is responsible for resolving resource keys.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -25,11 +24,11 @@ class ResourceKeyResolver implements ResourceKeyResolverContract
     /**
      * Register a transformable to resource key binding.
      *
-     * @param  string|array $transformable
+     * @param array|string $transformable
      * @param  string       $resourceKey
      * @return void
      */
-    public function bind($transformable, string $resourceKey)
+    public function bind(array|string $transformable, string $resourceKey): void
     {
         $this->bindings = array_merge($this->bindings, is_array($transformable) ? $transformable : [
             $transformable => $resourceKey,
@@ -39,10 +38,10 @@ class ResourceKeyResolver implements ResourceKeyResolverContract
     /**
      * Resolve a resource key from the given data.
      *
-     * @param  mixed $data
+     * @param mixed $data
      * @return string
      */
-    public function resolve($data)
+    public function resolve(mixed $data): string
     {
         $transformable = $this->resolveTransformableItem($data);
 
@@ -63,7 +62,7 @@ class ResourceKeyResolver implements ResourceKeyResolverContract
      * @param  \Illuminate\Database\Eloquent\Model $model
      * @return string
      */
-    public function resolveFromModel(Model $model)
+    public function resolveFromModel(Model $model): string
     {
         if (method_exists($model, 'getResourceKey')) {
             return $model->getResourceKey();
@@ -78,7 +77,7 @@ class ResourceKeyResolver implements ResourceKeyResolverContract
      * @param  mixed $data
      * @return mixed
      */
-    protected function resolveTransformableItem($data)
+    protected function resolveTransformableItem(mixed $data): mixed
     {
         if (is_array($data) || $data instanceof Traversable) {
             foreach ($data as $item) {

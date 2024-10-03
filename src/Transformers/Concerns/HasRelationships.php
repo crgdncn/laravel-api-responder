@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace Flugg\Responder\Transformers\Concerns;
 
@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 /**
  * A trait to be used by a transformer to handle relations
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -183,7 +182,7 @@ trait HasRelationships
     }
 
     /**
-     * Applies any query constraints defined in the transformer to the list of relaations.
+     * Applies any query constraints defined in the transformer to the list of relations.
      *
      * @param  array $relations
      * @return array

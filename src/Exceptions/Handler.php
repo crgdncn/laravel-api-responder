@@ -1,4 +1,6 @@
-<?php
+<?php /** @noinspection ALL */
+
+/** @noinspection PhpFullyQualifiedNameUsageInspection */
 
 namespace Flugg\Responder\Exceptions;
 
@@ -8,7 +10,6 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 /**
  * An exception handler responsible for handling exceptions.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -19,11 +20,13 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Exception|\Throwable    $exception
+     * @param \Illuminate\Http\Request $request
+     * @param \Exception|\Throwable $exception
      * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Throwable
+     * @throws \Throwable
      */
-    public function render($request, $exception)
+    public function render($request, $exception): \Symfony\Component\HttpFoundation\Response
     {
         if ($request->wantsJson()) {
             $this->convertDefaultException($exception);

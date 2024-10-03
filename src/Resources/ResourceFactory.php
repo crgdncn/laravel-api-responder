@@ -1,10 +1,11 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace Flugg\Responder\Resources;
 
 use Flugg\Responder\Contracts\Resources\ResourceFactory as ResourceFactoryContract;
 use Flugg\Responder\Contracts\Resources\ResourceKeyResolver as ResourceKeyResolverContract;
 use Flugg\Responder\Contracts\Transformers\TransformerResolver;
+use Flugg\Responder\Transformers\Transformer;
 use Illuminate\Support\Arr;
 use League\Fractal\Resource\Collection as CollectionResource;
 use League\Fractal\Resource\Item as ItemResource;
@@ -16,7 +17,6 @@ use Traversable;
 /**
  * This class is responsible for making Fractal resources from a variety of data types.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -60,23 +60,23 @@ class ResourceFactory implements ResourceFactoryContract
     /**
      * Make resource from the given data.
      *
-     * @param  mixed                                                          $data
-     * @param  \Flugg\Responder\Transformers\Transformer|string|callable|null $transformer
+     * @param mixed|null $data
+     * @param callable|Transformer|string|null $transformer
      * @param  string|null                                                    $resourceKey
      * @return \League\Fractal\Resource\ResourceInterface
      */
-    public function make($data = null, $transformer = null, string $resourceKey = null): ResourceInterface
+    public function make(mixed $data = null, callable|Transformer|string $transformer = null, string $resourceKey = null): ResourceInterface
     {
         if ($data instanceof ResourceInterface) {
             return $this->makeFromResource($data, $transformer, $resourceKey);
         } elseif (is_null($data = $this->normalizer->normalize($data))) {
-            return $this->instatiateResource($data, null, $resourceKey);
+            return $this->instantiateResource($data, null, $resourceKey);
         }
 
         $transformer = $this->resolveTransformer($data, $transformer);
         $resourceKey = $this->resolveResourceKey($data, $resourceKey);
 
-        return $this->instatiateResource($data, $transformer, $resourceKey);
+        return $this->instantiateResource($data, $transformer, $resourceKey);
     }
 
     /**
@@ -86,6 +86,7 @@ class ResourceFactory implements ResourceFactoryContract
      * @param  \Flugg\Responder\Transformers\Transformer|string|callable|null $transformer
      * @param  string|null                                                    $resourceKey
      * @return \League\Fractal\Resource\ResourceInterface
+     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
     public function makeFromResource(ResourceInterface $resource, $transformer = null, string $resourceKey = null): ResourceInterface
     {
@@ -96,14 +97,14 @@ class ResourceFactory implements ResourceFactoryContract
     }
 
     /**
-     * Instatiate a new resource instance.
+     * Instantiate a new resource instance.
      *
      * @param  mixed                                                   $data
      * @param  \Flugg\Responder\Transformers\Transformer|callable|null $transformer
      * @param  string|null                                             $resourceKey
      * @return \League\Fractal\Resource\ResourceInterface
      */
-    protected function instatiateResource($data, $transformer = null, string $resourceKey = null): ResourceInterface
+    protected function instantiateResource($data, $transformer = null, string $resourceKey = null): ResourceInterface
     {
         if (is_null($data)) {
             return new NullResource(null, null, $resourceKey);

@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace Flugg\Responder\Testing;
 
@@ -8,7 +8,6 @@ use Illuminate\Http\JsonResponse;
 /**
  * A trait to be used by test case classes to give access to additional assertion methods.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -17,11 +16,11 @@ trait MakesApiRequests
     /**
      * Assert that the response is a valid success response.
      *
-     * @param  mixed $data
-     * @param  int   $status
+     * @param mixed|null $data
+     * @param int $status
      * @return $this
      */
-    protected function seeSuccess($data = null, $status = 200)
+    protected function seeSuccess(mixed $data = null, int $status = 200): static
     {
         $response = $this->seeSuccessResponse($data, $status);
         $this->seeSuccessData($response->getData(true)['data']);
@@ -32,11 +31,11 @@ trait MakesApiRequests
     /**
      * Assert that the response is a valid success response.
      *
-     * @param  mixed $data
-     * @param  int   $status
+     * @param mixed|null $data
+     * @param int $status
      * @return $this
      */
-    protected function seeSuccessEquals($data = null, $status = 200)
+    protected function seeSuccessEquals(mixed $data = null, int $status = 200): static
     {
         $response = $this->seeSuccessResponse($data, $status);
         $this->seeJsonEquals($response->getData(true));
@@ -47,10 +46,10 @@ trait MakesApiRequests
     /**
      * Assert that the response data contains the given structure.
      *
-     * @param  mixed $data
+     * @param mixed|null $data
      * @return $this
      */
-    protected function seeSuccessStructure($data = null)
+    protected function seeSuccessStructure(mixed $data = null): static
     {
         $this->seeJsonStructure([
             'data' => $data,
@@ -62,11 +61,11 @@ trait MakesApiRequests
     /**
      * Assert that the response is a valid success response.
      *
-     * @param  mixed $data
-     * @param  int   $status
+     * @param mixed|null $data
+     * @param int $status
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function seeSuccessResponse($data = null, $status = 200): JsonResponse
+    protected function seeSuccessResponse(mixed $data = null, int $status = 200): JsonResponse
     {
         $response = $this->app->make(Responder::class)->success($data, $status);
 
@@ -81,10 +80,10 @@ trait MakesApiRequests
     /**
      * Assert that the response data contains given values.
      *
-     * @param  mixed $data
+     * @param mixed|null $data
      * @return $this
      */
-    protected function seeSuccessData($data = null)
+    protected function seeSuccessData(mixed $data = null): static
     {
         collect($data)->each(function ($value, $key) {
             if (is_array($value)) {
@@ -100,10 +99,10 @@ trait MakesApiRequests
     /**
      * Decodes JSON response and returns the data.
      *
-     * @param  string|array|null $attributes
+     * @param array|string|null $attributes
      * @return array
      */
-    protected function getSuccessData($attributes = null)
+    protected function getSuccessData(array|string $attributes = null): array
     {
         $rawData = $this->decodeResponseJson()['data'];
 
@@ -129,7 +128,7 @@ trait MakesApiRequests
      * @param  int|null $status
      * @return $this
      */
-    protected function seeError(string $error, int $status = null)
+    protected function seeError(string $error, int $status = null): static
     {
         if (! is_null($status)) {
             $this->seeStatusCode($status);
@@ -153,28 +152,28 @@ trait MakesApiRequests
     /**
      * Asserts that the status code of the response matches the given code.
      *
-     * @param  int $status
+     * @param int $status
      * @return $this
      */
-    abstract protected function seeStatusCode($status);
+    abstract protected function seeStatusCode(int $status): static;
 
     /**
      * Assert that the response contains JSON.
      *
      * @param  array|null $data
-     * @param  bool       $negate
+     * @param bool $negate
      * @return $this
      */
-    abstract public function seeJson(array $data = null, $negate = false);
+    abstract public function seeJson(array $data = null, bool $negate = false): static;
 
     /**
      * Assert that the JSON response has a given structure.
      *
      * @param  array|null $structure
-     * @param  array|null $responseData
+     * @param array|null $responseData
      * @return $this
      */
-    abstract public function seeJsonStructure(array $structure = null, $responseData = null);
+    abstract public function seeJsonStructure(array $structure = null, array $responseData = null): static;
 
     /**
      * Assert that the response is a superset of the given JSON.
@@ -182,7 +181,7 @@ trait MakesApiRequests
      * @param  array $data
      * @return $this
      */
-    abstract protected function seeJsonSubset(array $data);
+    abstract protected function seeJsonSubset(array $data): static;
 
     /**
      * Assert that the response contains an exact JSON array.
@@ -190,12 +189,12 @@ trait MakesApiRequests
      * @param  array $data
      * @return $this
      */
-    abstract public function seeJsonEquals(array $data);
+    abstract public function seeJsonEquals(array $data): static;
 
     /**
      * Validate and return the decoded response JSON.
      *
      * @return array
      */
-    abstract protected function decodeResponseJson();
+    abstract protected function decodeResponseJson(): array;
 }

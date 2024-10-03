@@ -1,4 +1,6 @@
-<?php
+<?php /** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace Flugg\Responder\Serializers;
 
@@ -7,11 +9,10 @@ use League\Fractal\Pagination\PaginatorInterface;
 
 /**
  * A no-op serializer class responsible for returning the given data back untouched.
- * Only the raw transformed data is shown, this means meta data wont be visible.
- * The package uses this serializer for the [Transformation] class and it's
+ * Only the raw transformed data is shown, this means metadata won't be visible.
+ * The package uses this serializer for the [Transformation] class, and it's
  * practically an internal serializer, but feel free to use it elsewhere.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -87,11 +88,11 @@ class NoopSerializer extends SuccessSerializer
     /**
      * Merge includes into data.
      *
-     * @param  array $transformedData
-     * @param  array $includedData
+     * @param array $transformedData
+     * @param array $includedData
      * @return array
      */
-    public function mergeIncludes($transformedData, $includedData): array
+    public function mergeIncludes(array $transformedData, array $includedData): array
     {
         return array_merge($transformedData, $includedData);
     }

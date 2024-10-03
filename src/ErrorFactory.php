@@ -1,4 +1,10 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+
+/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
 
 namespace Flugg\Responder;
 
@@ -9,7 +15,6 @@ use Flugg\Responder\Contracts\ErrorSerializer;
 /**
  * A factory class responsible for creating error arrays.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -36,12 +41,12 @@ class ErrorFactory implements ErrorFactoryContract
      * Make an error array from the given error code and message.
      *
      * @param  \Flugg\Responder\Contracts\ErrorSerializer $serializer
-     * @param  mixed|null                                 $errorCode
+     * @param mixed|null $errorCode
      * @param  string|null                                $message
      * @param  array|null                                 $data
      * @return array
      */
-    public function make(ErrorSerializer $serializer, $errorCode = null, string $message = null, array $data = null): array
+    public function make(ErrorSerializer $serializer, mixed $errorCode = null, string $message = null, array $data = null): array
     {
         if (isset($errorCode) && ! isset($message)) {
             $message = $this->messageResolver->resolve($errorCode);

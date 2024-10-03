@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace Flugg\Responder\Transformers\Concerns;
 
@@ -13,7 +13,6 @@ use LogicException;
 /**
  * A trait to be used by a transformer to make related resources.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */

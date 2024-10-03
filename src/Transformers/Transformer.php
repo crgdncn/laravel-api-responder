@@ -1,4 +1,8 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace Flugg\Responder\Transformers;
 
@@ -7,13 +11,13 @@ use Flugg\Responder\Contracts\Transformers\TransformerResolver;
 use Flugg\Responder\Transformers\Concerns\HasRelationships;
 use Flugg\Responder\Transformers\Concerns\MakesResources;
 use Flugg\Responder\Transformers\Concerns\OverridesFractal;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Container\Container;
 use League\Fractal\TransformerAbstract;
 
 /**
  * An abstract base transformer class responsible for transforming data.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -36,7 +40,7 @@ abstract class Transformer extends TransformerAbstract
      * @param  \Closure $resolver
      * @return void
      */
-    public static function containerResolver(Closure $resolver)
+    public static function containerResolver(Closure $resolver): void
     {
         static::$containerResolver = $resolver;
     }
@@ -54,10 +58,12 @@ abstract class Transformer extends TransformerAbstract
     /**
      * Resolve a transformer from a class name string.
      *
-     * @param  string $transformer
+     * @param string $transformer
      * @return mixed
+     * @throws BindingResolutionException
+     * @throws BindingResolutionException
      */
-    protected function resolveTransformer(string $transformer)
+    protected function resolveTransformer(string $transformer): mixed
     {
         $transformerResolver = $this->resolveContainer()->make(TransformerResolver::class);
 

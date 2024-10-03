@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Facade;
 /**
  * A facade class responsible for giving easy access to the transformer service.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  *
@@ -21,7 +20,7 @@ class Transformation extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
         return TransformationService::class;
     }

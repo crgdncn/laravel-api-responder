@@ -1,6 +1,6 @@
 <?php
 
-namespace Flugg\Responder\Tests\Unit\Facades;
+namespace Flugg\Responder\Tests\Unit\Http\Facades;
 
 use Flugg\Responder\Facades\Transformation as TransformationFacade;
 use Flugg\Responder\Tests\TestCase;

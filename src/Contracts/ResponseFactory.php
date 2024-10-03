@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace Flugg\Responder\Contracts;
 
@@ -7,7 +7,6 @@ use Illuminate\Http\JsonResponse;
 /**
  * A contract for creating JSON responses.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */

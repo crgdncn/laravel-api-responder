@@ -1,8 +1,9 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace Flugg\Responder\Console;
 
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
@@ -10,7 +11,6 @@ use Symfony\Component\Console\Input\InputOption;
 /**
  * An Artisan command class responsible for making transformer classes.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -42,7 +42,7 @@ class MakeTransformer extends GeneratorCommand
      *
      * @return string
      */
-    protected function getStub()
+    protected function getStub(): string
     {
         if ($this->option('plain')) {
             return __DIR__ . '/../../resources/stubs/transformer.plain.stub';
@@ -57,7 +57,7 @@ class MakeTransformer extends GeneratorCommand
      * @param  string $rootNamespace
      * @return string
      */
-    protected function getDefaultNamespace($rootNamespace)
+    protected function getDefaultNamespace($rootNamespace): string
     {
         return $rootNamespace . '\Transformers';
     }
@@ -65,10 +65,12 @@ class MakeTransformer extends GeneratorCommand
     /**
      * Build the class with the given name.
      *
-     * @param  string $name
+     * @param string $name
      * @return string
+     * @throws FileNotFoundException
+     * @throws FileNotFoundException
      */
-    protected function buildClass($name)
+    protected function buildClass($name): string
     {
         $replace = [];
 
@@ -88,7 +90,7 @@ class MakeTransformer extends GeneratorCommand
      *
      * @return string
      */
-    protected function resolveModelFromClassName()
+    protected function resolveModelFromClassName(): string
     {
         return 'App\\Models\\' . str_replace('Transformer', '', Arr::last(explode('/', $this->getNameInput())));
     }
@@ -99,7 +101,7 @@ class MakeTransformer extends GeneratorCommand
      * @param  array $replace
      * @return array
      */
-    protected function buildModelReplacements(array $replace)
+    protected function buildModelReplacements(array $replace): array
     {
         if (! class_exists($modelClass = $this->parseModel($this->option('model')))) {
             if ($this->confirm("A {$modelClass} model does not exist. Do you want to generate it?", true)) {
@@ -117,10 +119,10 @@ class MakeTransformer extends GeneratorCommand
     /**
      * Get the fully-qualified model class name.
      *
-     * @param  string $model
+     * @param string $model
      * @return string
      */
-    protected function parseModel($model)
+    protected function parseModel(string $model): string
     {
         if (preg_match('([^A-Za-z0-9_/\\\\])', $model)) {
             throw new InvalidArgumentException('Model name contains invalid characters.');
@@ -140,7 +142,7 @@ class MakeTransformer extends GeneratorCommand
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['model', 'm', InputOption::VALUE_OPTIONAL, 'Generate a model transformer.'],

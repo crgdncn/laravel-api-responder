@@ -1,6 +1,6 @@
 <?php
 
-namespace Flugg\Responder\Tests\Unit\Http\Responses;
+namespace Flugg\Responder\Tests\Unit\Http\Responses\Factories;
 
 use Flugg\Responder\Http\Responses\Factories\LaravelResponseFactory;
 use Flugg\Responder\Tests\TestCase;

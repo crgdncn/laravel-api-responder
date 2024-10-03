@@ -14,7 +14,7 @@ return [
     */
 
     'serializers' => [
-        'success' => Flugg\Responder\Serializers\SuccessSerializer::class,
+        'success' => \Flugg\Responder\Serializers\SuccessSerializer::class,
         'error' => \Flugg\Responder\Serializers\ErrorSerializer::class,
     ],
 

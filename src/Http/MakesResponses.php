@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace Flugg\Responder\Http;
 
@@ -9,7 +9,6 @@ use Flugg\Responder\Responder;
 /**
  * A trait to be used by controllers to easily make success- and error responses.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */

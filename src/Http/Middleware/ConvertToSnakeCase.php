@@ -8,7 +8,6 @@ use Illuminate\Support\Str;
 /**
  * A middleware class responsible for converting incoming parameter keys to snake case.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -19,7 +18,7 @@ class ConvertToSnakeCase extends TransformsRequest
      *
      * @var array
      */
-    protected $except = [
+    protected array $except = [
         //
     ];
 
@@ -30,7 +29,7 @@ class ConvertToSnakeCase extends TransformsRequest
      * @param  string $keyPrefix
      * @return array
      */
-    protected function cleanArray(array $data, $keyPrefix = '')
+    protected function cleanArray(array $data, $keyPrefix = ''): array
     {
         $parameters = [];
 

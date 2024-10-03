@@ -1,4 +1,7 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace Flugg\Responder\Http\Responses\Factories;
 
@@ -9,7 +12,6 @@ use Illuminate\Http\JsonResponse;
 /**
  * A factory class for creating JSON responses utilizing Laravel.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */

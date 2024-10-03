@@ -1,15 +1,21 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace Flugg\Responder;
 
 use Flugg\Responder\Contracts\Responder as ResponderContract;
 use Flugg\Responder\Http\Responses\ErrorResponseBuilder;
 use Flugg\Responder\Http\Responses\SuccessResponseBuilder;
+use Flugg\Responder\Transformers\Transformer;
 
 /**
  * A service class responsible for building responses.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -44,12 +50,13 @@ class Responder implements ResponderContract
     /**
      * Build a successful response.
      *
-     * @param  mixed                                                          $data
-     * @param  callable|string|\Flugg\Responder\Transformers\Transformer|null $transformer
+     * @param mixed|null $data
+     * @param callable|Transformer|string|null $transformer
      * @param  string|null                                                    $resourceKey
      * @return \Flugg\Responder\Http\Responses\SuccessResponseBuilder
+     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
-    public function success($data = null, $transformer = null, string $resourceKey = null): SuccessResponseBuilder
+    public function success(mixed $data = null, callable|Transformer|string $transformer = null, string $resourceKey = null): SuccessResponseBuilder
     {
         return $this->successResponseBuilder->transform($data, $transformer, $resourceKey);
     }
@@ -57,11 +64,11 @@ class Responder implements ResponderContract
     /**
      * Build an error response.
      *
-     * @param  mixed|null  $errorCode
+     * @param mixed|null $errorCode
      * @param  string|null $message
      * @return \Flugg\Responder\Http\Responses\ErrorResponseBuilder
      */
-    public function error($errorCode = null, string $message = null): ErrorResponseBuilder
+    public function error(mixed $errorCode = null, string $message = null): ErrorResponseBuilder
     {
         return $this->errorResponseBuilder->error($errorCode, $message);
     }

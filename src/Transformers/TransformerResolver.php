@@ -1,17 +1,27 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+/** @noinspection ALL */
+
+/** @noinspection ALL */
 
 namespace Flugg\Responder\Transformers;
 
 use Flugg\Responder\Contracts\Transformable;
 use Flugg\Responder\Contracts\Transformers\TransformerResolver as TransformerResolverContract;
 use Flugg\Responder\Exceptions\InvalidTransformerException;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Container\Container;
 use Traversable;
 
 /**
  * This class is responsible for resolving transformers.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -42,9 +52,9 @@ class TransformerResolver implements TransformerResolverContract
      * Construct the resolver class.
      *
      * @param \Illuminate\Contracts\Container\Container                 $container
-     * @param \Flugg\Responder\Transformers\Transformer|string|callable $fallback
+     * @param callable|\Flugg\Responder\Transformers\Transformer|string $fallback
      */
-    public function __construct(Container $container, $fallback)
+    public function __construct(Container $container, callable|Transformer|string $fallback)
     {
         $this->container = $container;
         $this->fallback = $fallback;
@@ -53,11 +63,11 @@ class TransformerResolver implements TransformerResolverContract
     /**
      * Register a transformable to transformer binding.
      *
-     * @param  string|array         $transformable
-     * @param  string|callback|null $transformer
+     * @param array|string $transformable
+     * @param callback|string $transformer
      * @return void
      */
-    public function bind($transformable, $transformer = null)
+    public function bind(array|string $transformable, callable|string $transformer): void
     {
         $this->bindings = array_merge($this->bindings, is_array($transformable) ? $transformable : [
             $transformable => $transformer,
@@ -67,11 +77,12 @@ class TransformerResolver implements TransformerResolverContract
     /**
      * Resolve a transformer.
      *
-     * @param  \Flugg\Responder\Transformers\Transformer|string|callable $transformer
+     * @param callable|Transformer|string $transformer
      * @return \Flugg\Responder\Transformers\Transformer|callable
      * @throws \Flugg\Responder\Exceptions\InvalidTransformerException
+     * @throws BindingResolutionException
      */
-    public function resolve($transformer)
+    public function resolve(callable|Transformer|string $transformer): callable|Transformer|string
     {
         if (is_string($transformer)) {
             return $this->container->make($transformer);
@@ -87,10 +98,10 @@ class TransformerResolver implements TransformerResolverContract
     /**
      * Resolve a transformer from the given data.
      *
-     * @param  mixed $data
+     * @param mixed $data
      * @return \Flugg\Responder\Transformers\Transformer|callable
      */
-    public function resolveFromData($data)
+    public function resolveFromData(mixed $data): callable|Transformer|string
     {
         $transformer = $this->resolveTransformer($this->resolveTransformableItem($data));
 
@@ -103,7 +114,7 @@ class TransformerResolver implements TransformerResolverContract
      * @param  mixed $transformable
      * @return \Flugg\Responder\Contracts\Transformable|callable
      */
-    protected function resolveTransformer($transformable)
+    protected function resolveTransformer(mixed $transformable): callable|Transformer|string|Transformable
     {
         if (is_object($transformable) && key_exists(get_class($transformable), $this->bindings)) {
             return $this->bindings[get_class($transformable)];
@@ -122,7 +133,7 @@ class TransformerResolver implements TransformerResolverContract
      * @param  mixed $data
      * @return mixed
      */
-    protected function resolveTransformableItem($data)
+    protected function resolveTransformableItem(mixed $data): mixed
     {
         if (is_array($data) || $data instanceof Traversable) {
             foreach ($data as $item) {

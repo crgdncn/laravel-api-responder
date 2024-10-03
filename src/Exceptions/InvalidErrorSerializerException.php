@@ -8,7 +8,6 @@ use RuntimeException;
 /**
  * An exception thrown when given invalid serializers.
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */

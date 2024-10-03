@@ -3,10 +3,9 @@
 namespace Flugg\Responder\Exceptions\Http;
 
 /**
- * An exception thrown whan a user is unauthenticated. This exception replaces Laravel's
+ * An exception thrown when a user is unauthenticated. This exception replaces Laravels'
  * [\Illuminate\Auth\AuthenticationException].
  *
- * @package flugger/laravel-responder
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
@@ -17,12 +16,12 @@ class UnauthenticatedException extends HttpException
      *
      * @var int
      */
-    protected $status = 401;
+    protected int $status = 401;
 
     /**
      * The error code.
      *
      * @var string|null
      */
-    protected $errorCode = 'unauthenticated';
+    protected ?string $errorCode = 'unauthenticated';
 }
