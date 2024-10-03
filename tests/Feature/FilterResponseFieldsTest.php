@@ -2,7 +2,7 @@
 
 namespace Flugg\Responder\Tests\Feature;
 
-use Flugg\Responder\Tests\ProductTransformer;
+use Flugg\Responder\Tests\Support\ProductTransformer;
 use Flugg\Responder\Tests\TestCase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;

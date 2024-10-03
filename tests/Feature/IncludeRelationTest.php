@@ -3,9 +3,9 @@
 namespace Flugg\Responder\Tests\Feature;
 
 use Carbon\Carbon;
-use Flugg\Responder\Tests\OrderTransformer;
-use Flugg\Responder\Tests\Product;
-use Flugg\Responder\Tests\ProductTransformer;
+use Flugg\Responder\Tests\Support\OrderTransformer;
+use Flugg\Responder\Tests\Support\Product;
+use Flugg\Responder\Tests\Support\ProductTransformer;
 use Flugg\Responder\Tests\TestCase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;

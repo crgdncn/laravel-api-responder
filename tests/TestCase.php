@@ -6,10 +6,14 @@ use Flugg\Responder\Contracts\ResponseFactory;
 use Flugg\Responder\Http\Responses\ErrorResponseBuilder;
 use Flugg\Responder\Http\Responses\SuccessResponseBuilder;
 use Flugg\Responder\ResponderServiceProvider;
+use Flugg\Responder\Tests\Support\Customer;
+use Flugg\Responder\Tests\Support\Order;
+use Flugg\Responder\Tests\Support\Product;
+use Flugg\Responder\Tests\Support\Shipment;
 use Flugg\Responder\TransformBuilder;
 use Flugg\Responder\Transformers\Transformer;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\JsonResponse;
 use League\Fractal\Manager;
 use League\Fractal\Resource\Collection;
@@ -32,28 +36,28 @@ abstract class TestCase extends BaseTestCase
     /**
      * A dummy product model.
      *
-     * @var \Flugg\Responder\Tests\Product
+     * @var Product
      */
     protected $product;
 
     /**
      * A dummy shipment model.
      *
-     * @var \Flugg\Responder\Tests\Product
+     * @var Product
      */
     protected $shipment;
 
     /**
      * A dummy customer model.
      *
-     * @var \Flugg\Responder\Tests\Product
+     * @var Product
      */
     protected $customer;
 
     /**
      * A dummy order model.
      *
-     * @var \Flugg\Responder\Tests\Product
+     * @var Product
      */
     protected $order;
 
@@ -77,7 +81,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Define environment setup.
      *
-     * @param  \Illuminate\Foundation\Application $app
+     * @param  Application $app
      * @return void
      */
     protected function getEnvironmentSetUp($app)
@@ -135,7 +139,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Get package service providers.
      *
-     * @param \Illuminate\Foundation\Application $app
+     * @param Application $app
      * @return array
      */
     protected function getPackageProviders($app)
@@ -165,7 +169,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Create a mock of a [Transformer] returning the data directly.
      *
-     * @return \Mockery\MockInterface
+     * @return MockInterface
      */
     protected function mockTransformer(): MockInterface
     {
@@ -181,7 +185,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Create a mock of a [TransformBuilder].
      *
-     * @return \Mockery\MockInterface
+     * @return MockInterface
      */
     protected function mockTransformBuilder(): MockInterface
     {
@@ -199,7 +203,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Create a mock of a [ResponseFactory]].
      *
-     * @return \Mockery\MockInterface
+     * @return MockInterface
      */
     protected function mockResponseFactory(): MockInterface
     {
@@ -215,7 +219,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Create a mock of an [ErrorResponseBuilder].
      *
-     * @return \Mockery\MockInterface
+     * @return MockInterface
      */
     protected function mockErrorResponseBuilder(): MockInterface
     {
@@ -230,7 +234,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Create a mock of a [SuccessResponseBuilder].
      *
-     * @return \Mockery\MockInterface
+     * @return MockInterface
      */
     protected function mockSuccessResponseBuilder(): MockInterface
     {
@@ -245,7 +249,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Create a mock of a Fractal [Manager].
      *
-     * @return \Mockery\MockInterface
+     * @return MockInterface
      */
     protected function mockFractalManager(): MockInterface
     {
@@ -263,7 +267,7 @@ abstract class TestCase extends BaseTestCase
      * Create a mock of a [ResourceInterface].
      *
      * @param  string|null $className
-     * @return \Mockery\MockInterface
+     * @return MockInterface
      */
     protected function mockResource(string $className = null): MockInterface
     {
@@ -276,107 +280,5 @@ abstract class TestCase extends BaseTestCase
         $resource->shouldReceive('setPaginator')->andReturnSelf()->byDefault();
 
         return $resource;
-    }
-}
-
-class Product extends Model
-{
-    protected $guarded = [];
-    protected $table = 'products';
-
-    public function shipments()
-    {
-        return $this->hasMany(Shipment::class);
-    }
-
-    public function orders()
-    {
-        return $this->hasMany(Order::class);
-    }
-}
-
-class Shipment extends Model
-{
-    protected $guarded = [];
-    protected $table = 'shipments';
-    protected $casts = [
-        'product_id' => 'int',
-    ];
-
-    public function product()
-    {
-        return $this->belongsTo(Product::class);
-    }
-}
-
-class Order extends Model
-{
-    protected $guarded = [];
-    protected $table = 'orders';
-    protected $casts = [
-        'product_id' => 'int',
-        'customer_id' => 'int',
-    ];
-
-    public function product()
-    {
-        return $this->belongsTo(Product::class);
-    }
-
-    public function customer()
-    {
-        return $this->belongsTo(Customer::class);
-    }
-}
-
-class Customer extends Model
-{
-    protected $guarded = [];
-    protected $table = 'customers';
-
-    public function orders()
-    {
-        return $this->hasMany(Order::class);
-    }
-}
-
-class ProductTransformer extends Transformer
-{
-    protected $relations = [
-        'shipments' => ShipmentTransformer::class,
-        'orders' => OrderTransformer::class,
-    ];
-
-    public function transform(Product $product)
-    {
-        return $product->fresh()->toArray();
-    }
-}
-
-class ShipmentTransformer extends Transformer
-{
-    public function transform(Shipment $shipment)
-    {
-        return $shipment->fresh()->toArray();
-    }
-}
-
-class OrderTransformer extends Transformer
-{
-    protected $relations = [
-        'customer' => CustomerTransformer::class,
-    ];
-
-    public function transform(Order $order)
-    {
-        return $order->fresh()->toArray();
-    }
-}
-
-class CustomerTransformer extends Transformer
-{
-    public function transform(Customer $customer)
-    {
-        return $customer->fresh()->toArray();
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Flugg\Responder\Tests\Feature;
 
-use Flugg\Responder\Tests\Product;
+use Flugg\Responder\Tests\Support\Product;
 use Flugg\Responder\Tests\TestCase;
 use League\Fractal\Pagination\Cursor;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;

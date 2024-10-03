@@ -5,7 +5,7 @@ namespace Flugg\Responder\Tests\Feature;
 use Flugg\Responder\Contracts\Transformable;
 use Flugg\Responder\Contracts\Transformers\TransformerResolver;
 use Flugg\Responder\Serializers\SuccessSerializer;
-use Flugg\Responder\Tests\Product;
+use Flugg\Responder\Tests\Support\Product;
 use Flugg\Responder\Tests\TestCase;
 use Flugg\Responder\Transformers\Transformer;
 use Illuminate\Testing\Constraints\ArraySubset;
