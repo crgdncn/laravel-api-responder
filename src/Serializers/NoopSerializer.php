@@ -1,6 +1,4 @@
-<?php /** @noinspection ALL */
-
-/** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Serializers;
 
@@ -66,7 +64,7 @@ class NoopSerializer extends SuccessSerializer
     /**
      * Format pagination data.
      *
-     * @param  \League\Fractal\Pagination\PaginatorInterface $paginator
+     * @param PaginatorInterface $paginator
      * @return array
      */
     public function paginator(PaginatorInterface $paginator): array
@@ -77,7 +75,7 @@ class NoopSerializer extends SuccessSerializer
     /**
      * Format cursor data.
      *
-     * @param  \League\Fractal\Pagination\CursorInterface $cursor
+     * @param CursorInterface $cursor
      * @return array
      */
     public function cursor(CursorInterface $cursor): array

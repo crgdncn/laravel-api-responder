@@ -1,11 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-
-/** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Http\Responses;
 
@@ -26,16 +19,14 @@ class ErrorResponseBuilder extends ResponseBuilder
     /**
      * A factory for building error data output.
      *
-     * @var \Flugg\Responder\Contracts\ErrorFactory
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @var ErrorFactory
      */
     private $errorFactory;
 
     /**
      * A serializer for formatting error data.
      *
-     * @var \Flugg\Responder\Contracts\ErrorSerializer
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @var ErrorSerializer
      */
     protected $serializer;
 
@@ -70,10 +61,8 @@ class ErrorResponseBuilder extends ResponseBuilder
     /**
      * Construct the builder class.
      *
-     * @param \Flugg\Responder\Contracts\ResponseFactory $responseFactory
-     * @param \Flugg\Responder\Contracts\ErrorFactory    $errorFactory
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @param ResponseFactory $responseFactory
+     * @param ErrorFactory $errorFactory
      */
     public function __construct(ResponseFactory $responseFactory, ErrorFactory $errorFactory)
     {
@@ -113,11 +102,9 @@ class ErrorResponseBuilder extends ResponseBuilder
     /**
      * Set the error serializer.
      *
-     * @param \Flugg\Responder\Contracts\ErrorSerializer|string $serializer
+     * @param ErrorSerializer|string $serializer
      * @return $this
-     * @throws \Flugg\Responder\Exceptions\InvalidErrorSerializerException
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @throws InvalidErrorSerializerException
      */
     public function serializer(ErrorSerializer|string $serializer): static
     {
@@ -150,7 +137,6 @@ class ErrorResponseBuilder extends ResponseBuilder
      * @param  int $status
      * @return void
      * @throws \InvalidArgumentException
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
      */
     protected function validateStatusCode(int $status): void
     {

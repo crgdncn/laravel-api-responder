@@ -1,10 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
-/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
-
-/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+<?php
 
 namespace Flugg\Responder;
 
@@ -23,14 +17,14 @@ class ErrorFactory implements ErrorFactoryContract
     /**
      * A resolver for resolving messages from error codes.
      *
-     * @var \Flugg\Responder\Contracts\ErrorMessageResolver
+     * @var ErrorMessageResolverContract
      */
     protected $messageResolver;
 
     /**
      * Construct the factory class.
      *
-     * @param \Flugg\Responder\Contracts\ErrorMessageResolver $messageResolver
+     * @param ErrorMessageResolverContract $messageResolver
      */
     public function __construct(ErrorMessageResolverContract $messageResolver)
     {
@@ -40,7 +34,7 @@ class ErrorFactory implements ErrorFactoryContract
     /**
      * Make an error array from the given error code and message.
      *
-     * @param  \Flugg\Responder\Contracts\ErrorSerializer $serializer
+     * @param ErrorSerializer $serializer
      * @param mixed|null $errorCode
      * @param  string|null                                $message
      * @param  array|null                                 $data

@@ -1,18 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
-/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
-/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
-/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
-/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
-/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
-
-/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+<?php
 
 namespace Flugg\Responder\Pagination;
 
@@ -31,7 +17,7 @@ class CursorPaginator
     /**
      * A list of the items being paginated.
      *
-     * @var \Illuminate\Support\Collection
+     * @var Collection
      */
     protected $items;
 
@@ -66,7 +52,7 @@ class CursorPaginator
     /**
      * Create a new paginator instance.
      *
-     * @param array|\Illuminate\Support\Collection|null $data
+     * @param array|Collection|null $data
      * @param int|string|null $cursor
      * @param int|string|null $previousCursor
      * @param int|string|null $nextCursor
@@ -123,7 +109,7 @@ class CursorPaginator
     /**
      * Get the paginator's underlying collection.
      *
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
     public function get(): Collection
     {
@@ -133,7 +119,7 @@ class CursorPaginator
     /**
      * Set the paginator's underlying collection.
      *
-     * @param array|\Illuminate\Support\Collection|null $data
+     * @param array|Collection|null $data
      * @return self
      */
     public function set(array|Collection|null $data): CursorPaginator

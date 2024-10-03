@@ -1,4 +1,4 @@
-<?php /** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Transformers\Concerns;
 
@@ -218,7 +218,7 @@ trait HasRelationships
     /**
      * Resolve a relation from a model instance and an identifier.
      *
-     * @param  \Illuminate\Database\Eloquent\Model $model
+     * @param Model $model
      * @param  string                              $identifier
      * @return mixed
      */

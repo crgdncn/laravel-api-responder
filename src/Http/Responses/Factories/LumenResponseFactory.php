@@ -1,7 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-
-/** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Http\Responses\Factories;
 
@@ -20,14 +17,14 @@ class LumenResponseFactory implements ResponseFactory
     /**
      * The Lumen factory for making responses.
      *
-     * @var \Laravel\Lumen\Http\ResponseFactory
+     * @var BaseLumenResponseFactory
      */
     protected $factory;
 
     /**
      * Construct the factory class.
      *
-     * @param \Laravel\Lumen\Http\ResponseFactory $factory
+     * @param BaseLumenResponseFactory $factory
      */
     public function __construct(BaseLumenResponseFactory $factory)
     {

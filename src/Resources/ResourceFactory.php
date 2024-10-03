@@ -1,4 +1,4 @@
-<?php /** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Resources;
 
@@ -25,30 +25,30 @@ class ResourceFactory implements ResourceFactoryContract
     /**
      * A service class, used to normalize data.
      *
-     * @var \Flugg\Responder\Resources\DataNormalizer
+     * @var DataNormalizer
      */
     protected $normalizer;
 
     /**
      * A resolver class, used to resolve resource keys.
      *
-     * @var \Flugg\Responder\Contracts\Transformers\TransformerResolver
+     * @var TransformerResolver
      */
     protected $transformerResolver;
 
     /**
      * A resolver class, used to resolve resource keys.
      *
-     * @var \Flugg\Responder\Contracts\Resources\ResourceKeyResolver
+     * @var ResourceKeyResolverContract
      */
     protected $resourceKeyResolver;
 
     /**
      * Construct the factory class.
      *
-     * @param \Flugg\Responder\Resources\DataNormalizer                   $normalizer
-     * @param \Flugg\Responder\Contracts\Transformers\TransformerResolver $transformerResolver
-     * @param \Flugg\Responder\Contracts\Resources\ResourceKeyResolver    $resourceKeyResolver
+     * @param DataNormalizer $normalizer
+     * @param TransformerResolver $transformerResolver
+     * @param ResourceKeyResolverContract $resourceKeyResolver
      */
     public function __construct(DataNormalizer $normalizer, TransformerResolver $transformerResolver, ResourceKeyResolverContract $resourceKeyResolver)
     {
@@ -63,7 +63,7 @@ class ResourceFactory implements ResourceFactoryContract
      * @param mixed|null $data
      * @param callable|Transformer|string|null $transformer
      * @param  string|null                                                    $resourceKey
-     * @return \League\Fractal\Resource\ResourceInterface
+     * @return ResourceInterface
      */
     public function make(mixed $data = null, callable|Transformer|string $transformer = null, string $resourceKey = null): ResourceInterface
     {
@@ -82,11 +82,10 @@ class ResourceFactory implements ResourceFactoryContract
     /**
      * Make resource from the given resource.
      *
-     * @param  \League\Fractal\Resource\ResourceInterface                     $resource
-     * @param  \Flugg\Responder\Transformers\Transformer|string|callable|null $transformer
+     * @param ResourceInterface $resource
+     * @param Transformer|string|callable|null $transformer
      * @param  string|null                                                    $resourceKey
-     * @return \League\Fractal\Resource\ResourceInterface
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @return ResourceInterface
      */
     public function makeFromResource(ResourceInterface $resource, $transformer = null, string $resourceKey = null): ResourceInterface
     {
@@ -100,9 +99,9 @@ class ResourceFactory implements ResourceFactoryContract
      * Instantiate a new resource instance.
      *
      * @param  mixed                                                   $data
-     * @param  \Flugg\Responder\Transformers\Transformer|callable|null $transformer
+     * @param Transformer|callable|null $transformer
      * @param  string|null                                             $resourceKey
-     * @return \League\Fractal\Resource\ResourceInterface
+     * @return ResourceInterface
      */
     protected function instantiateResource($data, $transformer = null, string $resourceKey = null): ResourceInterface
     {
@@ -136,8 +135,8 @@ class ResourceFactory implements ResourceFactoryContract
      * Resolve a transformer.
      *
      * @param  mixed                                                          $data
-     * @param  \Flugg\Responder\Transformers\Transformer|string|callable|null $transformer
-     * @return \Flugg\Responder\Transformers\Transformer|callable
+     * @param Transformer|string|callable|null $transformer
+     * @return Transformer|callable
      */
     protected function resolveTransformer($data, $transformer)
     {

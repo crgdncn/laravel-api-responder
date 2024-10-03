@@ -2,6 +2,8 @@
 
 namespace Flugg\Responder\Contracts;
 
+use Flugg\Responder\Transformers\Transformer;
+
 /**
  * A contract for making the class transformable.
  *
@@ -13,8 +15,7 @@ interface Transformable
     /**
      * Get a transformer for the class.
      *
-     * @return \Flugg\Responder\Transformers\Transformer|callable|string|null
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @return Transformer|callable|string|null
      */
-    public function transformer(): callable|\Flugg\Responder\Transformers\Transformer|string|null;
+    public function transformer(): callable|Transformer|string|null;
 }

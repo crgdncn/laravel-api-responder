@@ -1,8 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-
-/** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Http\Responses;
 
@@ -13,6 +9,7 @@ use InvalidArgumentException;
 use League\Fractal\Pagination\Cursor;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Serializer\SerializerAbstract;
+use Flugg\Responder\Transformers\Transformer;
 
 /**
  * A builder class for building success responses.
@@ -32,7 +29,7 @@ class SuccessResponseBuilder extends ResponseBuilder
     /**
      * A builder for building transformed arrays.
      *
-     * @var \Flugg\Responder\TransformBuilder
+     * @var TransformBuilder
      */
     protected $transformBuilder;
 
@@ -46,8 +43,8 @@ class SuccessResponseBuilder extends ResponseBuilder
     /**
      * Construct the builder class.
      *
-     * @param \Flugg\Responder\Contracts\ResponseFactory $responseFactory
-     * @param \Flugg\Responder\TransformBuilder          $transformBuilder
+     * @param ResponseFactory $responseFactory
+     * @param TransformBuilder $transformBuilder
      */
     public function __construct(ResponseFactory $responseFactory, TransformBuilder $transformBuilder)
     {
@@ -60,12 +57,11 @@ class SuccessResponseBuilder extends ResponseBuilder
      * Set resource data for the transformation.
      *
      * @param mixed|null $data
-     * @param callable|\Flugg\Responder\Transformers\Transformer|string|null $transformer
+     * @param callable|Transformer|string|null $transformer
      * @param  string|null                                                    $resourceKey
      * @return self
-     * @noinspection PhpFullyQualifiedNameUsageInspection
      */
-    public function transform(mixed $data = null, callable|\Flugg\Responder\Transformers\Transformer|string $transformer = null, string $resourceKey = null): SuccessResponseBuilder
+    public function transform(mixed $data = null, callable|Transformer|string $transformer = null, string $resourceKey = null): SuccessResponseBuilder
     {
         $this->transformBuilder->resource($data, $transformer, $resourceKey);
 

@@ -1,7 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-
-/** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Http\Responses\Decorators;
 
@@ -19,14 +16,14 @@ abstract class ResponseDecorator implements ResponseFactory
     /**
      * The factory being decorated.
      *
-     * @var \Flugg\Responder\Contracts\ResponseFactory
+     * @var ResponseFactory
      */
     protected $factory;
 
     /**
      * Construct the decorator class.
      *
-     * @param \Flugg\Responder\Contracts\ResponseFactory $factory
+     * @param ResponseFactory $factory
      */
     public function __construct(ResponseFactory $factory)
     {
@@ -39,7 +36,7 @@ abstract class ResponseDecorator implements ResponseFactory
      * @param  array $data
      * @param  int   $status
      * @param  array $headers
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     abstract public function make(array $data, int $status, array $headers = []): JsonResponse;
 }

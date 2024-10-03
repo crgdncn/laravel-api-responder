@@ -169,7 +169,7 @@ class ResourceKeySerializer extends SuccessSerializer
 
 class ProductWithClosureTransformer extends Product implements Transformable
 {
-    public function transformer()
+    public function transformer(): callable|Transformer|string|null
     {
         return function ($product) {
             return [
@@ -181,7 +181,7 @@ class ProductWithClosureTransformer extends Product implements Transformable
 
 class ProductWithTransformerClass extends Product implements Transformable
 {
-    public function transformer()
+    public function transformer(): callable|Transformer|string|null
     {
         return new ProductNameTransformer();
     }
@@ -189,7 +189,7 @@ class ProductWithTransformerClass extends Product implements Transformable
 
 class ProductWithTransformerClassName extends Product implements Transformable
 {
-    public function transformer()
+    public function transformer(): callable|Transformer|string|null
     {
         return ProductNameTransformer::class;
     }

@@ -1,19 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-
-/** @noinspection SpellCheckingInspection */
+<?php
 
 namespace Flugg\Responder;
 
@@ -31,6 +16,7 @@ use League\Fractal\Pagination\Cursor;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Resource\Collection as CollectionResource;
 use League\Fractal\Resource\NullResource;
+use League\Fractal\Resource\ResourceInterface;
 use League\Fractal\Serializer\SerializerAbstract;
 
 /**
@@ -44,36 +30,35 @@ class TransformBuilder
     /**
      * A factory class for making Fractal resources.
      *
-     * @var \Flugg\Responder\Contracts\Resources\ResourceFactory
+     * @var ResourceFactory
      */
     protected $resourceFactory;
 
     /**
      * A factory for making transformed arrays.
      *
-     * @var \Flugg\Responder\Contracts\TransformFactory
+     * @var TransformFactory
      */
     private $transformFactory;
 
     /**
      * A factory used to build Fractal paginator adapters.
      *
-     * @var \Flugg\Responder\Contracts\Pagination\PaginatorFactory
+     * @var PaginatorFactory
      */
     protected $paginatorFactory;
 
     /**
      * The resource that's being built.
      *
-     * @var \League\Fractal\Resource\ResourceInterface
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @var ResourceInterface
      */
     protected $resource;
 
     /**
      * A serializer for formatting data after transforming.
      *
-     * @var \League\Fractal\Serializer\SerializerAbstract
+     * @var SerializerAbstract
      */
     protected $serializer;
 
@@ -101,9 +86,9 @@ class TransformBuilder
     /**
      * Construct the builder class.
      *
-     * @param \Flugg\Responder\Contracts\Resources\ResourceFactory   $resourceFactory
-     * @param \Flugg\Responder\Contracts\TransformFactory            $transformFactory
-     * @param \Flugg\Responder\Contracts\Pagination\PaginatorFactory $paginatorFactory
+     * @param ResourceFactory $resourceFactory
+     * @param TransformFactory $transformFactory
+     * @param PaginatorFactory $paginatorFactory
      */
     public function __construct(ResourceFactory $resourceFactory, TransformFactory $transformFactory, PaginatorFactory $paginatorFactory)
     {
@@ -116,7 +101,7 @@ class TransformBuilder
      * Make a resource from the given data and transformer and set the resource key.
      *
      * @param mixed|null $data
-     * @param callable|\Flugg\Responder\Transformers\Transformer|string|null $transformer
+     * @param callable|Transformer|string|null $transformer
      * @param  string|null                                                    $resourceKey
      * @return $this
      */
@@ -136,7 +121,7 @@ class TransformBuilder
     /**
      * Manually set the cursor on the resource.
      *
-     * @param  \League\Fractal\Pagination\Cursor $cursor
+     * @param Cursor $cursor
      * @return $this
      */
     public function cursor(Cursor $cursor): static
@@ -151,7 +136,7 @@ class TransformBuilder
     /**
      * Manually set the paginator on the resource.
      *
-     * @param  \League\Fractal\Pagination\IlluminatePaginatorAdapter $paginator
+     * @param IlluminatePaginatorAdapter $paginator
      * @return $this
      */
     public function paginator(IlluminatePaginatorAdapter $paginator): static
@@ -227,9 +212,9 @@ class TransformBuilder
     /**
      * Set the serializer.
      *
-     * @param \League\Fractal\Serializer\SerializerAbstract|string $serializer
+     * @param SerializerAbstract|string $serializer
      * @return $this
-     * @throws \Flugg\Responder\Exceptions\InvalidSuccessSerializerException
+     * @throws InvalidSuccessSerializerException
      */
     public function serializer(SerializerAbstract|string $serializer): static
     {
@@ -266,7 +251,7 @@ class TransformBuilder
      * Prepare requested relations for the transformation.
      *
      * @param  mixed                                                          $data
-     * @param callable|\Flugg\Responder\Transformers\Transformer|string|null $transformer
+     * @param callable|Transformer|string|null $transformer
      * @return void
      */
     protected function prepareRelations(mixed $data, callable|Transformer|string|null $transformer): void
@@ -316,7 +301,7 @@ class TransformBuilder
      *
      * @param  mixed                                                          $data
      * @param  array                                                          $requested
-     * @param callable|\Flugg\Responder\Transformers\Transformer|string|null $transformer
+     * @param callable|Transformer|string|null $transformer
      * @return void
      */
     protected function eagerLoadRelations(mixed $data, array $requested, callable|Transformer|string|null $transformer): void

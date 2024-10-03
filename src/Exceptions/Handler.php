@@ -1,11 +1,10 @@
-<?php /** @noinspection ALL */
-
-/** @noinspection PhpFullyQualifiedNameUsageInspection */
+<?php
 
 namespace Flugg\Responder\Exceptions;
 
 use Flugg\Responder\Exceptions\Http\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * An exception handler responsible for handling exceptions.
@@ -22,11 +21,11 @@ class Handler extends ExceptionHandler
      *
      * @param \Illuminate\Http\Request $request
      * @param \Exception|\Throwable $exception
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      * @throws \Throwable
      * @throws \Throwable
      */
-    public function render($request, $exception): \Symfony\Component\HttpFoundation\Response
+    public function render($request, $exception): Response
     {
         if ($request->wantsJson()) {
             $this->convertDefaultException($exception);

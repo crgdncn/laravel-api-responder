@@ -1,8 +1,9 @@
-<?php /** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Contracts\Resources;
 
 use League\Fractal\Resource\ResourceInterface;
+use Flugg\Responder\Transformers\Transformer;
 
 /**
  * A contract for creating resources.
@@ -16,10 +17,9 @@ interface ResourceFactory
      * Make resource from the given data.
      *
      * @param mixed|null $data
-     * @param callable|\Flugg\Responder\Transformers\Transformer|string|null $transformer
+     * @param callable|Transformer|string|null $transformer
      * @param  string|null                                                    $resourceKey
-     * @return \League\Fractal\Resource\ResourceInterface
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @return ResourceInterface
      */
-    public function make(mixed $data = null, callable|\Flugg\Responder\Transformers\Transformer|string $transformer = null, string $resourceKey = null): ResourceInterface;
+    public function make(mixed $data = null, callable|Transformer|string $transformer = null, string $resourceKey = null): ResourceInterface;
 }

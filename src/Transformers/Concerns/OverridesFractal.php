@@ -1,9 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-
-/** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Transformers\Concerns;
 
@@ -45,10 +40,10 @@ trait OverridesFractal
     /**
      * Overrides Fractal's method for including a relation.
      *
-     * @param  \League\Fractal\Scope $scope
+     * @param Scope $scope
      * @param string $identifier
      * @param  mixed                 $data
-     * @return \League\Fractal\Resource\ResourceInterface
+     * @return ResourceInterface
      */
     protected function callIncludeMethod(Scope $scope, string $identifier, $data): ResourceInterface
     {
@@ -60,7 +55,7 @@ trait OverridesFractal
     /**
      * Resolve scoped includes for the given scope.
      *
-     * @param  \League\Fractal\Scope $scope
+     * @param Scope $scope
      * @return array
      */
     protected function resolveScopedIncludes(Scope $scope): array
@@ -78,9 +73,9 @@ trait OverridesFractal
     /**
      * Get the current scope of the transformer.
      *
-     * @return \League\Fractal\Scope
+     * @return Scope
      */
-    abstract public function getCurrentScope(): Scope;
+    abstract public function getCurrentScope(): ?Scope;
 
     /**
      * Normalize relations to force a key value structure.
@@ -96,7 +91,7 @@ trait OverridesFractal
      * @param  string $identifier
      * @param  mixed  $data
      * @param  array  $parameters
-     * @return \League\Fractal\Resource\ResourceInterface
+     * @return ResourceInterface
      */
     abstract protected function includeResource(string $identifier, mixed $data, array $parameters): ResourceInterface;
 }

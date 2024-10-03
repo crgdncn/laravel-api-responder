@@ -1,8 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-
-/** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Pagination;
 
@@ -40,8 +36,8 @@ class PaginatorFactory implements PaginatorFactoryContract
     /**
      * Make a Fractal paginator adapter from a Laravel paginator.
      *
-     * @param  \Illuminate\Contracts\Pagination\LengthAwarePaginator $paginator
-     * @return \League\Fractal\Pagination\PaginatorInterface
+     * @param LengthAwarePaginator $paginator
+     * @return PaginatorInterface
      */
     public function make(LengthAwarePaginator $paginator): PaginatorInterface
     {
@@ -53,8 +49,8 @@ class PaginatorFactory implements PaginatorFactoryContract
     /**
      * Make a Fractal paginator adapter from a Laravel paginator.
      *
-     * @param  \Flugg\Responder\Pagination\CursorPaginator $paginator
-     * @return \League\Fractal\Pagination\Cursor
+     * @param CursorPaginator $paginator
+     * @return Cursor
      */
     public function makeCursor(CursorPaginator $paginator): Cursor
     {

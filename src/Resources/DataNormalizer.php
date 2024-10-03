@@ -1,19 +1,18 @@
-<?php /** @noinspection ALL */
-/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
-
-/** @noinspection PhpFullyQualifiedNameUsageInspection */
+<?php
 
 namespace Flugg\Responder\Resources;
 
 use Flugg\Responder\Pagination\CursorPaginator;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Collection;
 
 /**
  * This class is responsible for normalizing resource data.
@@ -45,10 +44,10 @@ class DataNormalizer
     /**
      * Normalize a relationship.
      *
-     * @param  \Illuminate\Database\Eloquent\Relations\Relation $relation
-     * @return \Illuminate\Support\Collection|\Illuminate\Database\Eloquent\Model|null
+     * @param Relation $relation
+     * @return Collection|Model|null
      */
-    protected function normalizeRelation(Relation $relation): \Illuminate\Database\Eloquent\Model|\Illuminate\Support\Collection|null
+    protected function normalizeRelation(Relation $relation): Model|Collection|null
     {
         if ($this->isInstanceOf($relation, [BelongsTo::class, HasOne::class, MorphOne::class, MorphTo::class])) {
             return $relation->first();

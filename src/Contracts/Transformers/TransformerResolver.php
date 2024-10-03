@@ -2,6 +2,9 @@
 
 namespace Flugg\Responder\Contracts\Transformers;
 
+use Flugg\Responder\Exceptions\InvalidTransformerException;
+use Flugg\Responder\Transformers\Transformer;
+
 /**
  * A contract for resolving transformers.
  *
@@ -22,17 +25,17 @@ interface TransformerResolver
     /**
      * Resolve a transformer.
      *
-     * @param callable|\Flugg\Responder\Transformers\Transformer|string $transformer
-     * @return \Flugg\Responder\Transformers\Transformer|callable
-     * @throws \Flugg\Responder\Exceptions\InvalidTransformerException
+     * @param callable|Transformer|string $transformer
+     * @return Transformer|callable
+     * @throws InvalidTransformerException
      */
-    public function resolve(callable|\Flugg\Responder\Transformers\Transformer|string $transformer): callable|\Flugg\Responder\Transformers\Transformer;
+    public function resolve(callable|Transformer|string $transformer): callable|Transformer;
 
     /**
      * Resolve a transformer from the given data.
      *
      * @param  mixed $data
-     * @return \Flugg\Responder\Transformers\Transformer|callable
+     * @return Transformer|callable
      */
-    public function resolveFromData(mixed $data): callable|\Flugg\Responder\Transformers\Transformer;
+    public function resolveFromData(mixed $data): callable|Transformer;
 }

@@ -1,6 +1,4 @@
-<?php /** @noinspection ALL */
-
-/** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Serializers;
 
@@ -86,7 +84,7 @@ class SuccessSerializer extends ArraySerializer
     /**
      * Format cursor data.
      *
-     * @param  \League\Fractal\Pagination\CursorInterface $cursor
+     * @param CursorInterface $cursor
      * @return array
      */
     public function cursor(CursorInterface $cursor): array

@@ -1,10 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-
-/** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder;
 
@@ -24,22 +18,22 @@ class Responder implements ResponderContract
     /**
      * A builder for building success responses.
      *
-     * @var \Flugg\Responder\Http\Responses\SuccessResponseBuilder
+     * @var SuccessResponseBuilder
      */
     protected $successResponseBuilder;
 
     /**
      * A builder for building error responses.
      *
-     * @var \Flugg\Responder\Http\Responses\ErrorResponseBuilder
+     * @var ErrorResponseBuilder
      */
     protected $errorResponseBuilder;
 
     /**
      * Construct the service class.
      *
-     * @param \Flugg\Responder\Http\Responses\SuccessResponseBuilder $successResponseBuilder
-     * @param \Flugg\Responder\Http\Responses\ErrorResponseBuilder   $errorResponseBuilder
+     * @param SuccessResponseBuilder $successResponseBuilder
+     * @param ErrorResponseBuilder $errorResponseBuilder
      */
     public function __construct(SuccessResponseBuilder $successResponseBuilder, ErrorResponseBuilder $errorResponseBuilder)
     {
@@ -53,8 +47,7 @@ class Responder implements ResponderContract
      * @param mixed|null $data
      * @param callable|Transformer|string|null $transformer
      * @param  string|null                                                    $resourceKey
-     * @return \Flugg\Responder\Http\Responses\SuccessResponseBuilder
-     * @noinspection PhpFullyQualifiedNameUsageInspection
+     * @return SuccessResponseBuilder
      */
     public function success(mixed $data = null, callable|Transformer|string $transformer = null, string $resourceKey = null): SuccessResponseBuilder
     {
@@ -66,7 +59,7 @@ class Responder implements ResponderContract
      *
      * @param mixed|null $errorCode
      * @param  string|null $message
-     * @return \Flugg\Responder\Http\Responses\ErrorResponseBuilder
+     * @return ErrorResponseBuilder
      */
     public function error(mixed $errorCode = null, string $message = null): ErrorResponseBuilder
     {

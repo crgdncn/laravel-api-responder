@@ -1,9 +1,10 @@
-<?php /** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Transformers\Concerns;
 
 use Countable;
 use Flugg\Responder\Contracts\Resources\ResourceFactory;
+use Flugg\Responder\Transformers\Transformer;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -29,9 +30,9 @@ trait MakesResources
      * Make a resource.
      *
      * @param  mixed                                                          $data
-     * @param  \Flugg\Responder\Transformers\Transformer|string|callable|null $transformer
+     * @param  Transformer|string|callable|null $transformer
      * @param  string|null                                                    $resourceKey
-     * @return \League\Fractal\Resource\ResourceInterface
+     * @return ResourceInterface
      */
     protected function resource($data = null, $transformer = null, string $resourceKey = null): ResourceInterface
     {
@@ -50,7 +51,7 @@ trait MakesResources
      * @param  string $identifier
      * @param  mixed  $data
      * @param  array  $parameters
-     * @return \League\Fractal\Resource\ResourceInterface
+     * @return ResourceInterface
      * @throws \LogicException
      */
     protected function includeResource(string $identifier, $data, array $parameters): ResourceInterface
@@ -75,10 +76,10 @@ trait MakesResources
     /**
      * Include a related resource from a model and cache the resource type for following calls.
      *
-     * @param  \Illuminate\Database\Eloquent\Model                            $model
+     * @param Model $model
      * @param  string                                                         $identifier
-     * @param  \Flugg\Responder\Transformers\Transformer|string|callable|null $transformer
-     * @return \League\Fractal\Resource\ResourceInterface
+     * @param  Transformer|string|callable|null $transformer
+     * @return ResourceInterface
      */
     protected function includeResourceFromModel(Model $model, string $identifier, $transformer = null): ResourceInterface
     {
@@ -107,14 +108,14 @@ trait MakesResources
     /**
      * Resolve a container using the resolver callback.
      *
-     * @return \Illuminate\Contracts\Container\Container
+     * @return Container
      */
     abstract protected function resolveContainer(): Container;
 
     /**
      * Resolve relation data from a model.
      *
-     * @param  \Illuminate\Database\Eloquent\Model $model
+     * @param Model $model
      * @param  string                              $identifier
      * @return mixed
      */

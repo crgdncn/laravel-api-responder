@@ -1,10 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-
-/** @noinspection SpellCheckingInspection */
+<?php
 
 namespace Flugg\Responder;
 
@@ -25,16 +19,14 @@ class FractalTransformFactory implements TransformFactory
     /**
      * A manager for executing transforms.
      *
-     * @var \League\Fractal\Manager
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @var Manager
      */
     protected $manager;
 
     /**
      * Construct the factory class.
      *
-     * @param \League\Fractal\Manager $manager
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @param Manager $manager
      */
     public function __construct(Manager $manager)
     {
@@ -44,12 +36,10 @@ class FractalTransformFactory implements TransformFactory
     /**
      * Transform the given resource, and serialize the data with the given serializer.
      *
-     * @param  \League\Fractal\Resource\ResourceInterface    $resource
-     * @param  \League\Fractal\Serializer\SerializerAbstract $serializer
+     * @param ResourceInterface $resource
+     * @param SerializerAbstract $serializer
      * @param  array                                         $options
      * @return array|null
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
      */
     public function make(ResourceInterface $resource, SerializerAbstract $serializer, array $options = []): ?array
     {
@@ -67,9 +57,8 @@ class FractalTransformFactory implements TransformFactory
      * Parse the transformation options.
      *
      * @param  array                                      $options
-     * @param  \League\Fractal\Resource\ResourceInterface $resource
+     * @param ResourceInterface $resource
      * @return array
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
      */
     protected function parseOptions(array $options, ResourceInterface $resource): array
     {

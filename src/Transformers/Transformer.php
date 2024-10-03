@@ -1,8 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-
-/** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Transformers;
 
@@ -48,7 +44,7 @@ abstract class Transformer extends TransformerAbstract
     /**
      * Resolve a container using the resolver callback.
      *
-     * @return \Illuminate\Contracts\Container\Container
+     * @return Container
      */
     protected function resolveContainer(): Container
     {

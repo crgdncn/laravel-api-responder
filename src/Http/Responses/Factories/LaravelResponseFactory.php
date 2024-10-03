@@ -1,7 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-
-/** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Http\Responses\Factories;
 
@@ -20,14 +17,14 @@ class LaravelResponseFactory implements ResponseFactory
     /**
      * The Laravel factory for making responses.
      *
-     * @var \Illuminate\Contracts\Routing\ResponseFactory
+     * @var BaseLaravelResponseFactory
      */
     protected $factory;
 
     /**
      * Construct the factory class.
      *
-     * @param \Illuminate\Contracts\Routing\ResponseFactory $factory
+     * @param BaseLaravelResponseFactory $factory
      */
     public function __construct(BaseLaravelResponseFactory $factory)
     {
@@ -40,7 +37,7 @@ class LaravelResponseFactory implements ResponseFactory
      * @param  array $data
      * @param  int   $status
      * @param  array $headers
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function make(array $data, int $status, array $headers = []): JsonResponse
     {

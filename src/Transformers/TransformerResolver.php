@@ -1,14 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-
-/** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Transformers;
 
@@ -37,22 +27,22 @@ class TransformerResolver implements TransformerResolverContract
     /**
      * A container used to resolve transformers.
      *
-     * @var \Illuminate\Contracts\Container\Container
+     * @var Container
      */
     protected $container;
 
     /**
      * A fallback transformer to return when no transformer can be resolved.
      *
-     * @var \Flugg\Responder\Transformers\Transformer|string|callable
+     * @var Transformer|string|callable
      */
     protected $fallback;
 
     /**
      * Construct the resolver class.
      *
-     * @param \Illuminate\Contracts\Container\Container                 $container
-     * @param callable|\Flugg\Responder\Transformers\Transformer|string $fallback
+     * @param Container $container
+     * @param callable|Transformer|string $fallback
      */
     public function __construct(Container $container, callable|Transformer|string $fallback)
     {
@@ -78,11 +68,11 @@ class TransformerResolver implements TransformerResolverContract
      * Resolve a transformer.
      *
      * @param callable|Transformer|string $transformer
-     * @return \Flugg\Responder\Transformers\Transformer|callable
-     * @throws \Flugg\Responder\Exceptions\InvalidTransformerException
+     * @return Transformer|callable
+     * @throws InvalidTransformerException
      * @throws BindingResolutionException
      */
-    public function resolve(callable|Transformer|string $transformer): callable|Transformer|string
+    public function resolve(callable|Transformer|string $transformer): callable|Transformer
     {
         if (is_string($transformer)) {
             return $this->container->make($transformer);
@@ -99,9 +89,9 @@ class TransformerResolver implements TransformerResolverContract
      * Resolve a transformer from the given data.
      *
      * @param mixed $data
-     * @return \Flugg\Responder\Transformers\Transformer|callable
+     * @return Transformer|callable
      */
-    public function resolveFromData(mixed $data): callable|Transformer|string
+    public function resolveFromData(mixed $data): callable|Transformer
     {
         $transformer = $this->resolveTransformer($this->resolveTransformableItem($data));
 
@@ -112,7 +102,7 @@ class TransformerResolver implements TransformerResolverContract
      * Resolve a transformer from the transformable element.
      *
      * @param  mixed $transformable
-     * @return \Flugg\Responder\Contracts\Transformable|callable
+     * @return Transformable|callable
      */
     protected function resolveTransformer(mixed $transformable): callable|Transformer|string|Transformable
     {

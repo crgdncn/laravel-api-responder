@@ -1,8 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection ALL */
-
-/** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Http\Responses;
 
@@ -23,7 +19,7 @@ abstract class ResponseBuilder implements Arrayable, Jsonable
     /**
      * A factory for making responses.
      *
-     * @var \Flugg\Responder\Contracts\ResponseFactory
+     * @var ResponseFactory
      */
     protected $responseFactory;
 
@@ -37,7 +33,7 @@ abstract class ResponseBuilder implements Arrayable, Jsonable
     /**
      * Construct the builder class.
      *
-     * @param \Flugg\Responder\Contracts\ResponseFactory $responseFactory
+     * @param ResponseFactory $responseFactory
      */
     public function __construct(ResponseFactory $responseFactory)
     {
@@ -66,7 +62,7 @@ abstract class ResponseBuilder implements Arrayable, Jsonable
      *
      * @param  int|null $status
      * @param  array    $headers
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function respond(int $status = null, array $headers = []): JsonResponse
     {
@@ -90,7 +86,7 @@ abstract class ResponseBuilder implements Arrayable, Jsonable
     /**
      * Convert the response to an Illuminate collection.
      *
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
     public function toCollection(): Collection
     {

@@ -1,7 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-
-/** @noinspection SpellCheckingInspection */
+<?php
 
 namespace Flugg\Responder;
 
@@ -103,8 +100,8 @@ class ResponderServiceProvider extends BaseServiceProvider
     /**
      * Decorate response factories.
      *
-     * @param  \Flugg\Responder\Contracts\ResponseFactory $factory
-     * @return \Flugg\Responder\Contracts\ResponseFactory
+     * @param ResponseFactoryContract $factory
+     * @return ResponseFactoryContract
      */
     protected function decorateResponseFactory(ResponseFactoryContract $factory): ResponseFactory
     {

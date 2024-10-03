@@ -1,6 +1,4 @@
-<?php /** @noinspection ALL */
-
-/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
+<?php
 
 namespace Flugg\Responder\Contracts;
 
@@ -15,7 +13,7 @@ interface ErrorFactory
     /**
      * Make an error array from the given error code, message and error data.
      *
-     * @param  \Flugg\Responder\Contracts\ErrorSerializer $serializer
+     * @param  ErrorSerializer $serializer
      * @param mixed|null $errorCode
      * @param  string|null                                $message
      * @param  array|null                                 $data

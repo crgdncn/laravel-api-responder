@@ -1,6 +1,4 @@
-<?php /** @noinspection ALL */
-
-/** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder;
 
@@ -18,8 +16,7 @@ class ErrorMessageResolver implements ErrorMessageResolverContract
     /**
      * A service for resolving messages from language files.
      *
-     * @var \Illuminate\Translation\Translator
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @var Translator
      */
     protected $translator;
 
@@ -33,8 +30,7 @@ class ErrorMessageResolver implements ErrorMessageResolverContract
     /**
      * Construct the resolver class.
      *
-     * @param \Illuminate\Translation\Translator $translator
-     * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+     * @param Translator $translator
      */
     public function __construct(Translator $translator)
     {

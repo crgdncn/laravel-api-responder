@@ -1,6 +1,4 @@
-<?php /** @noinspection ALL */
-
-/** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Exceptions\Http;
 
@@ -32,14 +30,14 @@ class ValidationFailedException extends HttpException
     /**
      * A validator for fetching validation messages.
      *
-     * @var \Illuminate\Contracts\Validation\Validator
+     * @var Validator
      */
     protected $validator;
 
     /**
      * Construct the exception class.
      *
-     * @param \Illuminate\Contracts\Validation\Validator $validator
+     * @param Validator $validator
      */
     public function __construct(Validator $validator)
     {

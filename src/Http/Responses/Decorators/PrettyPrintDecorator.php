@@ -1,4 +1,4 @@
-<?php /** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Http\Responses\Decorators;
 
@@ -18,7 +18,7 @@ class PrettyPrintDecorator extends ResponseDecorator
      * @param  array $data
      * @param  int   $status
      * @param  array $headers
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function make(array $data, int $status, array $headers = []): JsonResponse
     {

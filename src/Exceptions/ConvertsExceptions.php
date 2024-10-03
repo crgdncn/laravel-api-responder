@@ -1,8 +1,4 @@
-<?php /** @noinspection ALL */
-/** @noinspection ALL */
-/** @noinspection PhpUnnecessaryFullyQualifiedNameInspection */
-
-/** @noinspection PhpFullyQualifiedNameUsageInspection */
+<?php
 
 namespace Flugg\Responder\Exceptions;
 
@@ -79,8 +75,8 @@ trait ConvertsExceptions
     /**
      * Render an error response from an API exception.
      *
-     * @param  \Flugg\Responder\Exceptions\Http\HttpException $exception
-     * @return \Illuminate\Http\JsonResponse
+     * @param  HttpException $exception
+     * @return JsonResponse
      */
     protected function renderResponse(HttpException $exception): JsonResponse
     {

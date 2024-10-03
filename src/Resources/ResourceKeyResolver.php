@@ -1,4 +1,4 @@
-<?php /** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Resources;
 
@@ -59,7 +59,7 @@ class ResourceKeyResolver implements ResourceKeyResolverContract
     /**
      * Resolve a resource key from the given model.
      *
-     * @param  \Illuminate\Database\Eloquent\Model $model
+     * @param Model $model
      * @return string
      */
     public function resolveFromModel(Model $model): string

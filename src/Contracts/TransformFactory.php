@@ -1,6 +1,4 @@
-<?php /** @noinspection ALL */
-
-/** @noinspection ALL */
+<?php
 
 namespace Flugg\Responder\Contracts;
 
@@ -18,8 +16,8 @@ interface TransformFactory
     /**
      * Transform the given resource, and serialize the data with the given serializer.
      *
-     * @param  \League\Fractal\Resource\ResourceInterface    $resource
-     * @param  \League\Fractal\Serializer\SerializerAbstract $serializer
+     * @param ResourceInterface $resource
+     * @param SerializerAbstract $serializer
      * @param  array                                         $options
      * @return array|null
      */
