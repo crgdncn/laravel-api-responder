@@ -1,5 +1,5 @@
 {
-    "name": "flugger/laravel-responder",
+    "name": "crgdncn/laravel-api-responder",
     "description": "A Laravel Fractal package for building API responses, giving you the power of Fractal and the elegancy of Laravel.",
     "keywords": [
         "laravel",
@@ -10,12 +10,17 @@
         "response",
         "responder"
     ],
-    "homepage": "https://github.com/flugger/laravel-responder",
+    "homepage": "https://github.com/crgdncn/laravel-api-responder",
     "license": "MIT",
     "authors": [
         {
             "name": "Alexander Tømmerås",
-            "email": "flugged@gmail.com"
+            "email": "flugged@gmail.com",
+            "role": "Author"
+        },
+        {
+            "name": "Craig Duncan",
+            "role": "Forked repo developer"
         }
     ],
     "require": {
