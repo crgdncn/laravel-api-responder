@@ -45,7 +45,7 @@ class SuccessFlagDecoratorTest extends TestCase
      * Assert that the [make] method decorates the response data with information about
      * whether or not the response was successful.
      */
-    public function testMakeMethodShouldAppendSuccessFlagFieldToResponseData()
+    public function testMakeMethodShouldAppendSuccessFlagFieldToResponseData(): void
     {
         $response = $this->responseDecorator->make($data = ['foo' => 1], $status = 201);
 

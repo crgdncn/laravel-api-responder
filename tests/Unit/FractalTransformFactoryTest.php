@@ -49,7 +49,7 @@ class FractalTransformFactoryTest extends TestCase
     /**
      * Assert that the [make] method uses the manager to transform data.
      */
-    public function testMakeMethodShouldCallOnManager()
+    public function testMakeMethodShouldCallOnManager(): void
     {
         $this->manager->shouldReceive('createData')->andReturn($scope = Mockery::mock(Scope::class));
         $scope->shouldReceive('toArray')->andReturn($data = ['foo' => 1]);
@@ -72,7 +72,7 @@ class FractalTransformFactoryTest extends TestCase
      * Assert that the [make] method throws a [LogicException] when fieldsets are requested, but
      * the resource doesn't have a resource key.
      */
-    public function testMakeMethodShouldThrowExceptionIfResourceKeyIsNotSetAndFieldsetsAreRequested()
+    public function testMakeMethodShouldThrowExceptionIfResourceKeyIsNotSetAndFieldsetsAreRequested(): void
     {
         $this->manager->shouldReceive('createData')->andReturn($scope = Mockery::mock(Scope::class));
         $scope->shouldReceive('toArray')->andReturn($data = ['foo' => 1]);
@@ -87,7 +87,7 @@ class FractalTransformFactoryTest extends TestCase
     /**
      * Assert that the [make] method parses fieldsets
      */
-    public function testMakeMethodShouldParseFieldsets()
+    public function testMakeMethodShouldParseFieldsets(): void
     {
         $this->manager->shouldReceive('createData')->andReturn($scope = Mockery::mock(Scope::class));
         $scope->shouldReceive('toArray')->andReturn($data = ['foo' => 1]);
@@ -104,7 +104,7 @@ class FractalTransformFactoryTest extends TestCase
     /**
      * Assert that the [make] method parses fieldsets
      */
-    public function testMakeMethodShouldParseFieldsetsWithNested()
+    public function testMakeMethodShouldParseFieldsetsWithNested(): void
     {
         $this->manager->shouldReceive('createData')->andReturn($scope = Mockery::mock(Scope::class));
         $scope->shouldReceive('toArray')->andReturn($data = ['foo' => 1]);

@@ -46,7 +46,7 @@ class ErrorMessageResolverTest extends TestCase
     /**
      * Assert that the [resolve] method resolves error message from cache if binding is registered.
      */
-    public function testResolveMethodShouldResolveMessageFromCacheIfSet()
+    public function testResolveMethodShouldResolveMessageFromCacheIfSet(): void
     {
         $this->messageResolver->register($errorCode = 'test_error', $message = 'A test error occured.');
 
@@ -58,7 +58,7 @@ class ErrorMessageResolverTest extends TestCase
     /**
      * Assert that the [resolve] method uses the translator to resolve a message.
      */
-    public function testResolveMethodShouldResolveMessageFromTranslator()
+    public function testResolveMethodShouldResolveMessageFromTranslator(): void
     {
         $this->translator->shouldReceive('has')->andReturn(true);
         $this->translator->shouldReceive('get')->andReturn($message = 'A test error has occured.');
@@ -73,7 +73,7 @@ class ErrorMessageResolverTest extends TestCase
     /**
      * Assert that the [resolve] method returns [null] if the translator can't resolve message.
      */
-    public function testResolveMethodReturnsNullIfNoTranslatorKeyIsSet()
+    public function testResolveMethodReturnsNullIfNoTranslatorKeyIsSet(): void
     {
         $this->translator->shouldReceive('has')->andReturn(false);
 

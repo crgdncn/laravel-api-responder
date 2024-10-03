@@ -40,7 +40,7 @@ class TransformationTest extends TestCase
      * Assert that the parameters sent to the [transform] method is forwarded to the
      * transformer service.
      */
-    public function testMakeMethodShouldCallOnTransformer()
+    public function testMakeMethodShouldCallOnTransformer(): void
     {
         $this->transformation->shouldReceive('make')->andReturn($transformBuilder = $this->mockTransformBuilder());
 

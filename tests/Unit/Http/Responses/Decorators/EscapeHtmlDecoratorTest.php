@@ -44,7 +44,7 @@ class EscapeHtmlDecoratorTest extends TestCase
     /**
      * Assert that the [make] method decorates the response data escaping any HTML tags.
      */
-    public function testMakeMethodShouldEscapeHtmlTagsInResponseData()
+    public function testMakeMethodShouldEscapeHtmlTagsInResponseData(): void
     {
         $response = $this->responseDecorator->make($data = ['foo' => '<html></html>'], $status = 201);
 

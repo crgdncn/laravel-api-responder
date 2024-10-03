@@ -53,7 +53,7 @@ class ResponderTest extends TestCase
      * Assert that the parameters sent to the [success] method is forwarded to the success
      * response builder.
      */
-    public function testSuccessMethodShouldCallOnSuccessResponseBuilder()
+    public function testSuccessMethodShouldCallOnSuccessResponseBuilder(): void
     {
         $result = $this->responder->success($data = ['foo' => 1], $transformer = $this->mockTransformer(), $resourceKey = 'foo');
 
@@ -65,7 +65,7 @@ class ResponderTest extends TestCase
      * Assert that the parameters sent to the [error] method is forwarded to the error
      * response builder.
      */
-    public function testErrorMethodShouldCallOnErrorResponseBuilder()
+    public function testErrorMethodShouldCallOnErrorResponseBuilder(): void
     {
         $error = 'error_occured';
         $message = 'An error has occured.';

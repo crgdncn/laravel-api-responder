@@ -50,7 +50,7 @@ class HelpersTest extends TestCase
      * Assert that the [responder] function should resolve the responder service from the
      * service container.
      */
-    public function testResponderFunctionShouldResolveResponderService()
+    public function testResponderFunctionShouldResolveResponderService(): void
     {
         $result = responder();
 
@@ -61,7 +61,7 @@ class HelpersTest extends TestCase
      * Assert that the [transform] function should use the transformer service to transform
      * the data.
      */
-    public function testTransformationFunctionShouldTransformUsingTransformationClass()
+    public function testTransformationFunctionShouldTransformUsingTransformationClass(): void
     {
         $this->transformation->shouldReceive('make')->andReturn($transformBuilder = $this->mockTransformBuilder());
 

@@ -36,7 +36,7 @@ class ErrorSerializerTest extends TestCase
     /**
      * Assert that the [format] method serializes the error data.
      */
-    public function testFormatMethodSerializesErrorData()
+    public function testFormatMethodSerializesErrorData(): void
     {
         $formattedData = $this->serializer->format($code = 'test_error', $message = 'A test error has occured.', $data = ['foo' => 1]);
 

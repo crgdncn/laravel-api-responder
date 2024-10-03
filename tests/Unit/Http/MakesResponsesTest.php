@@ -48,7 +48,7 @@ class MakesResponsesTest extends TestCase
      * Assert that the parameters sent to the [success] method is forwarded to the
      * responder service.
      */
-    public function testSuccessMethodShouldCallOnResponder()
+    public function testSuccessMethodShouldCallOnResponder(): void
     {
         $this->responder->shouldReceive('success')->andReturn($responseBuilder = $this->mockSuccessResponseBuilder());
 
@@ -62,7 +62,7 @@ class MakesResponsesTest extends TestCase
      * Assert that the parameters sent to the [error] method is forwarded to the
      * responder service.
      */
-    public function testErrorMethodShouldCallOnResponder()
+    public function testErrorMethodShouldCallOnResponder(): void
     {
         $this->responder->shouldReceive('error')->andReturn($responseBuilder = $this->mockErrorResponseBuilder());
 

@@ -45,7 +45,7 @@ class StatusCodeDecoratorTest extends TestCase
      * Assert that the [make] method decorates the response data with information about
      * status code.
      */
-    public function testMakeMethodShouldAppendStatusCodeFieldToResponseData()
+    public function testMakeMethodShouldAppendStatusCodeFieldToResponseData(): void
     {
         $response = $this->responseDecorator->make($data = ['foo' => 1], $status = 201);
 

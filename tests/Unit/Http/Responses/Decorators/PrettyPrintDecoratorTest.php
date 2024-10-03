@@ -45,7 +45,7 @@ class PrettyPrintDecoratorTest extends TestCase
      * Assert that the [make] method decorates the response data setting the pretty print
      * JSON option.
      */
-    public function testMakeMethodShouldPrettyPrintResponseData()
+    public function testMakeMethodShouldPrettyPrintResponseData(): void
     {
         $response = $this->responseDecorator->make($data = ['foo' => ['bar', 'baz' => 1]], $status = 201);
 

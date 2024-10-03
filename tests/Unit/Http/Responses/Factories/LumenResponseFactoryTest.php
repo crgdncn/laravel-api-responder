@@ -51,7 +51,7 @@ class LumenResponseFactoryTest extends TestCase
     /**
      * Assert that the [make] method creates JSON responses using Lumen's [ResponseFactory].
      */
-    public function testMakeMethodShouldCreateJsonResponses()
+    public function testMakeMethodShouldCreateJsonResponses(): void
     {
         $response = $this->responseFactory->make($data = ['foo' => 1], $status = 201, $headers = ['x-foo' => 1]);
 
