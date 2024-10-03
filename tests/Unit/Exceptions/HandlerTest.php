@@ -1,6 +1,6 @@
 <?php
 
-namespace Flugg\Responder\Tests\Unit;
+namespace Flugg\Responder\Tests\Unit\Exceptions;
 
 use Exception;
 use Flugg\Responder\Contracts\Responder;

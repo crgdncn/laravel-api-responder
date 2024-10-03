@@ -31,11 +31,11 @@ final class HttpExceptionTest extends TestCase
         parent::setUp();
 
         $this->exception = new class () extends HttpException {
-            protected $status = 404;
-            protected $errorCode = 'test_error';
+            protected int $status = 404;
+            protected ?string $errorCode = 'test_error';
             protected $message = 'An error has occured.';
-            protected $data = ['foo' => 1];
-            protected $headers = ['x-foo' => true];
+            protected ?array $data = ['foo' => 1];
+            protected array $headers = ['x-foo' => true];
         };
     }
 
