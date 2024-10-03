@@ -14,7 +14,7 @@ use Mockery;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class TransformationTest extends TestCase
+final class TransformationTest extends TestCase
 {
     /**
      * A mock of a [Transformation] class.

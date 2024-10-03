@@ -18,7 +18,7 @@ use Mockery;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class PaginatorFactoryTest extends TestCase
+final class PaginatorFactoryTest extends TestCase
 {
     /**
      * Assert that the [make] method creates a paginator adapter from a [LengthAwarePaginator].

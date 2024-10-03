@@ -15,7 +15,7 @@ use Mockery;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class ErrorFactoryTest extends TestCase
+final class ErrorFactoryTest extends TestCase
 {
     /**
      * A mock of an [ErrorMessageResolver] class.

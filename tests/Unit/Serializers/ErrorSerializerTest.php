@@ -12,7 +12,7 @@ use Flugg\Responder\Tests\TestCase;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class ErrorSerializerTest extends TestCase
+final class ErrorSerializerTest extends TestCase
 {
     /**
      * The [ErrorSerializer] class being tested.

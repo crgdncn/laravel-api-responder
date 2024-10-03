@@ -14,7 +14,7 @@ use Flugg\Responder\Transformer;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class TransformationTest extends TestCase
+final class TransformationTest extends TestCase
 {
     /**
      * A mock of a [TransformBuilder] class.

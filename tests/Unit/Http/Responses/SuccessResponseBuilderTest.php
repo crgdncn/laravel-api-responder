@@ -17,7 +17,7 @@ use InvalidArgumentException;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class SuccessResponseBuilderTest extends TestCase
+final class SuccessResponseBuilderTest extends TestCase
 {
     /**
      * A mock of a [ResponseFactory] class.

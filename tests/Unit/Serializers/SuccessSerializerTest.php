@@ -15,7 +15,7 @@ use Mockery;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class SuccessSerializerTest extends TestCase
+final class SuccessSerializerTest extends TestCase
 {
     /**
      * The [SuccessSerializer] class being tested.

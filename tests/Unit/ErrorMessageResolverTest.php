@@ -14,7 +14,7 @@ use Mockery;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class ErrorMessageResolverTest extends TestCase
+final class ErrorMessageResolverTest extends TestCase
 {
     /**
      * A mock of a [Translator] service class.

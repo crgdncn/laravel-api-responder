@@ -15,7 +15,7 @@ use Mockery;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class NoopSerializerTest extends TestCase
+final class NoopSerializerTest extends TestCase
 {
     /**
      * The [NoopSerializer] class being tested.

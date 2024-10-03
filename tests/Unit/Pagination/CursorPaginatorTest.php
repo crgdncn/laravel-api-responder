@@ -14,7 +14,7 @@ use LogicException;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class CursorPaginatorTest extends TestCase
+final class CursorPaginatorTest extends TestCase
 {
     /**
      * Assert that the [previous], [cursor] and [next] methods allow you to get information

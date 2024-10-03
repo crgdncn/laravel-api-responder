@@ -23,7 +23,7 @@ use Mockery;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class ResourceFactoryTest extends TestCase
+final class ResourceFactoryTest extends TestCase
 {
     /**
      * A mock of a [DataNormalizer] class.

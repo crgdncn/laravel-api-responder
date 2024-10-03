@@ -12,7 +12,7 @@ use Flugg\Responder\Tests\TestCase;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class StatusCodeDecoratorTest extends TestCase
+final class StatusCodeDecoratorTest extends TestCase
 {
     /**
      * A mock of a [ResponseFactory] class.

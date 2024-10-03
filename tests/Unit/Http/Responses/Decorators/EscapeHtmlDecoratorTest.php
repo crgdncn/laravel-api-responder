@@ -12,7 +12,7 @@ use Flugg\Responder\Tests\TestCase;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class EscapeHtmlDecoratorTest extends TestCase
+final class EscapeHtmlDecoratorTest extends TestCase
 {
     /**
      * A mock of a [ResponseFactory] class.

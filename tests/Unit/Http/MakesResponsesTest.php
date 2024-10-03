@@ -14,7 +14,7 @@ use Mockery;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class MakesResponsesTest extends TestCase
+final class MakesResponsesTest extends TestCase
 {
     /**
      * A mock of a [Responder] service class.

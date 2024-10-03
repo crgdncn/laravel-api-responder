@@ -15,7 +15,7 @@ use stdClass;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class CreateSuccessResponseTest extends TestCase
+final class CreateSuccessResponseTest extends TestCase
 {
     /**
      * Assert that you can create success responses with no response data.

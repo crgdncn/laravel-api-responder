@@ -12,7 +12,7 @@ use Flugg\Responder\Tests\TestCase;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class ResponderTest extends TestCase
+final class ResponderTest extends TestCase
 {
     /**
      * A mock of a [SuccessResponseBuilder] class.

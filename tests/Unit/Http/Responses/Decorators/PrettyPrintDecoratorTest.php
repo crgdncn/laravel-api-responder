@@ -12,7 +12,7 @@ use Flugg\Responder\Tests\TestCase;
  * @author  Paolo Caleffi <p.caleffi@dreamonkey.com>
  * @license The MIT License
  */
-class PrettyPrintDecoratorTest extends TestCase
+final class PrettyPrintDecoratorTest extends TestCase
 {
     /**
      * A mock of a [ResponseFactory] class.

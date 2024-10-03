@@ -17,7 +17,7 @@ use Illuminate\Testing\Constraints\ArraySubset;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class TransformResponseDataTest extends TestCase
+final class TransformResponseDataTest extends TestCase
 {
     /**
      * Assert that you can transform the response data using a basic closure transformer.

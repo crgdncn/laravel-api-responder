@@ -19,7 +19,7 @@ use stdClass;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class TransformerResolverTest extends TestCase
+final class TransformerResolverTest extends TestCase
 {
     /**
      * A mock of a [Container] class.

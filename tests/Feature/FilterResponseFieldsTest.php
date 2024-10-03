@@ -22,7 +22,7 @@ use Mockery;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class FilterResponseFieldsTest extends TestCase
+final class FilterResponseFieldsTest extends TestCase
 {
     /**
      * Assert that you can filter fields with the sparse fieldset feature.

@@ -15,7 +15,7 @@ use Mockery;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class LaravelResponseFactoryTest extends TestCase
+final class LaravelResponseFactoryTest extends TestCase
 {
     /**
      * A mock of a Laravel's [ResponseFactory].

@@ -16,7 +16,7 @@ use Illuminate\Support\Collection;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class CreateResponseTest extends TestCase
+final class CreateResponseTest extends TestCase
 {
     /**
      * Assert that you can create responses using an injected responder service.

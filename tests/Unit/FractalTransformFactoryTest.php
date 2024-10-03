@@ -17,7 +17,7 @@ use Mockery;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class FractalTransformFactoryTest extends TestCase
+final class FractalTransformFactoryTest extends TestCase
 {
     /**
      * A mock a Fractal's [Manager] class.

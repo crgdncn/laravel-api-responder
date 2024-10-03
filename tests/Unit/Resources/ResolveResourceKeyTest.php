@@ -14,7 +14,7 @@ use Mockery;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class ResolveResourceKeyTest extends TestCase
+final class ResolveResourceKeyTest extends TestCase
 {
     /**
      * The [ResourceKeyResolver] class being tested.

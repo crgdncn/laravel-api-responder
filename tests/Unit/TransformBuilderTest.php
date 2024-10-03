@@ -28,7 +28,7 @@ use stdClass;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class TransformBuilderTest extends TestCase
+final class TransformBuilderTest extends TestCase
 {
     /**
      * A mock of a [ResourceFactory] class.

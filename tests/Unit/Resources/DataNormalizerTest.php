@@ -21,7 +21,7 @@ use Mockery;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class DataNormalizerTest extends TestCase
+final class DataNormalizerTest extends TestCase
 {
     /**
      * The [DataNormalizer] class being tested.

@@ -13,7 +13,7 @@ use Flugg\Responder\Tests\TestCase;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class HttpExceptionTest extends TestCase
+final class HttpExceptionTest extends TestCase
 {
     /**
      * A stub of the package's [Handler] class.

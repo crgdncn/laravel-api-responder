@@ -32,7 +32,7 @@ use Mockery;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class HandlerTest extends TestCase
+final class HandlerTest extends TestCase
 {
     /**
      * A mock of a [Request] object.

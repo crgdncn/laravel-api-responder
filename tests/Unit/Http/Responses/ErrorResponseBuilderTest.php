@@ -21,7 +21,7 @@ use stdClass;
  * @author  Alexander Tømmerås <flugged@gmail.com>
  * @license The MIT License
  */
-class ErrorResponseBuilderTest extends TestCase
+final class ErrorResponseBuilderTest extends TestCase
 {
     /**
      * A mock of a [ResponseFactory] class.
